@@ -1,0 +1,12 @@
+[10-May-2026 09:14:32 Europe/Berlin] PHP Warning:  include(not_found_file.php): Failed to open stream: No such file or directory in E:\WDPF70\xamp\htdocs\class_73\error.php on line 34
+[10-May-2026 09:14:32 Europe/Berlin] PHP Warning:  include(): Failed opening 'not_found_file.php' for inclusion (include_path='E:\WDPF70\xamp\php\PEAR') in E:\WDPF70\xamp\htdocs\class_73\error.php on line 34
+[10-May-2026 09:14:32 Europe/Berlin] PHP Warning:  Undefined variable $user in E:\WDPF70\xamp\htdocs\class_73\error.php on line 39
+[10-May-2026 09:14:32 Europe/Berlin] PHP Warning:  Undefined array key "name" in E:\WDPF70\xamp\htdocs\class_73\error.php on line 41
+[02-Jun-2026 05:30:27 Europe/Berlin] PHP Warning:  include(not_found_file.php): Failed to open stream: No such file or directory in E:\WDPF70\xamp\htdocs\class_73\error.php on line 34
+[02-Jun-2026 05:30:27 Europe/Berlin] PHP Warning:  include(): Failed opening 'not_found_file.php' for inclusion (include_path='E:\WDPF70\xamp\php\PEAR') in E:\WDPF70\xamp\htdocs\class_73\error.php on line 34
+[02-Jun-2026 05:30:27 Europe/Berlin] PHP Warning:  Undefined variable $user in E:\WDPF70\xamp\htdocs\class_73\error.php on line 39
+[02-Jun-2026 05:30:27 Europe/Berlin] PHP Warning:  Undefined array key "name" in E:\WDPF70\xamp\htdocs\class_73\error.php on line 41
+[06-Jun-2026 05:07:44 Europe/Berlin] PHP Warning:  include(not_found_file.php): Failed to open stream: No such file or directory in E:\WDPF70\xamp\htdocs\class_73\error.php on line 34
+[06-Jun-2026 05:07:44 Europe/Berlin] PHP Warning:  include(): Failed opening 'not_found_file.php' for inclusion (include_path='E:\WDPF70\xamp\php\PEAR') in E:\WDPF70\xamp\htdocs\class_73\error.php on line 34
+[06-Jun-2026 05:07:44 Europe/Berlin] PHP Warning:  Undefined variable $user in E:\WDPF70\xamp\htdocs\class_73\error.php on line 39
+[06-Jun-2026 05:07:44 Europe/Berlin] PHP Warning:  Undefined array key "name" in E:\WDPF70\xamp\htdocs\class_73\error.php on line 41

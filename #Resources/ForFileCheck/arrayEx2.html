@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // =====================================
+        // JavaScript Arrays + Operators Demo
+        // =====================================
+
+        // ===============================
+        // 1. Creating Arrays
+        // ===============================
+        let arr1 = [1, 2, 3];
+        let arr2 = new Array(4, 5, 6);
+
+        console.log("1:", arr1, arr2);
+
+
+        // ===============================
+        // 2. Accessing Elements
+        // ===============================
+        console.log("2:", arr1[0]); // first
+        console.log("2:", arr1[arr1.length - 1]); // last
+
+        // ===============================
+        // 3. Array Length
+        // ===============================
+        console.log("3 length:", arr1.length);
+
+        arr1.length = 2; // truncate
+        console.log("3 after truncate:", arr1);
+
+        // ===============================
+        // 4. Adding / Removing Elements
+        // ===============================
+        let mz = [1, 2, 3];
+        // push (end)
+        mz.push(4);
+        // pop (end)
+        mz.pop();
+        // unshift (start)
+        mz.unshift(0);
+        // shift (start)
+        mz.shift();
+
+        console.log("4:", mz);
+
+
+
+        let abc = [11, 22, 34, 56, 78, 90];
+        abc.push(20);
+        //11, 22, 34, 56, 78, 90, 20
+        abc.unshift(17);
+        //17, 11, 22, 34, 56, 78, 90, 20
+        abc.push(10);
+        //17, 11, 22, 34, 56, 78, 90, 20, 10
+        abc.unshift(3);
+        //3, 17, 11, 22, 34, 56, 78, 90, 20, 10
+        abc.shift();
+        //17, 11, 22, 34, 56, 78, 90, 20, 10
+        abc.pop();
+        //17, 11, 22, 34, 56, 78, 90, 20
+
+        console.log("4.12:", abc);
+        //17, 11, 22, 34, 56, 78, 90, 20
+
+
+
+        // ===============================
+        // 5. Splice (modify array)
+        // ===============================
+        let spliceArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+        // remove
+        spliceArr.splice(2, 4);
+        // add
+        spliceArr.splice(2, 5, "X", "Y", "Z");
+        console.log("5:", spliceArr);
+        // ===============================
+        // 6. Slice (copy array)
+        // ===============================
+        let sliceArr = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+        let newSlice = sliceArr.slice(3, 7);
+        console.log("6:", newSlice, sliceArr);
+
+
+
+        let number = 5;
+        number++;// number = number + 1;
+        number -= 3;// number = number + 3
+        number += 3;// number = number + 3
+
+        console.log("6.1:", number);
+
+
+
+
+        number++;// 2
+        number++;// 3
+        number++;// 4
+
+        console.log("6.1:", number);
+
+        // ===============================
+        // 7. Looping Arrays
+        // ===============================
+
+        // for (let val = 0; val < 10; val++) //0, 1, 2, 3, 4,.......9
+        // {
+        //     console.log(val);
+        //     console.log(val);
+        //     console.log(val);
+        // }
+
+
+
+        let num = 9;
+        if ((num % 2) > 0) {
+            console.log(num + " is Odd number");
+        } else {
+            console.log(num + " is Even number");
+        }
+
+
+
+
+
+
+        // if ((num % 2) > 0) {
+        //     console.log(num + " is Odd number");
+        // } else {
+        //     console.log(num + " is Even number");
+        // }
+
+
+
+
+
+        console.log("------------- ---------");
+
+
+        let oddNumbers = [];
+        let evenNumbers = [];
+        for (let num = 1; num <= 10; num++) {
+            if (num % 2 == 0) {
+                evenNumbers.push(num);
+            } else {
+                oddNumbers.push(num);
+            }
+        }
+
+        console.log("Odd numbers:", oddNumbers);
+        console.log("Even numbers:", evenNumbers);
+        console.log("----------------------");
+
+
+
+
+
+
+
+
+
+
+
+        console.log("For end--------------");
+
+        console.log("Problem ");
+
+
+        let loopArr = ["A", "B", "A", "C", "B", "D", "E", "Hello"];
+
+        for (let i = 0; i < loopArr.length; i++) {
+            let val = loopArr[i];
+
+            if (val == "A") {
+                console.log(val + " : Apple");
+            } else if (val == "B") {
+                console.log(val + " : Ball");
+            } else if (val == "C") {
+                console.log(val + " : Cat");
+            } else if (val == "D") {
+                console.log(val + " : Dog");
+            } else if (val == "E") {
+                console.log(val + " : Elephant");
+            } else {
+                console.log(val + " : Unknown");
+            }
+
+            // switch (val) {
+            //     case "A":
+            //         console.log(val + " : Apple");
+            //         break;
+            //     case "B":
+            //         console.log(val + " : Ball");
+            //         break;
+            //     case "C":
+            //         console.log(val + " : Cat");
+            //         break;
+            //     case "D":
+            //         console.log(val + " : Dog");
+            //         break;
+            //     case "E":
+            //         console.log(val + " : Elephant");
+            //         break;
+            //     default:
+            //         console.log(val + " : Unknown");
+            //         break;
+            // }
+
+        }
+
+
+        //length == total start from 1;
+        //index ==     start from 0
+
+        console.log(nums[0]);
+
+
+
+        let nums = ["A", "B", "C", "D", "E"];
+
+        for (let n = 0; n < nums.length; n++) {
+            console.log(n);
+        }
+        
+        for (let val of nums) {
+            console.log(val);
+        }
+
+        loopArr.forEach(v => console.log("7 forEach:", v));
+
+
+        // ===============================
+        // 8. Map (transform)
+        // ===============================
+        let mapArr = [1, 2, 3];
+        let doubled = mapArr.map(v => v * 2);
+        console.log("8:", doubled, mapArr);
+
+        // ===============================
+        // 9. Filter
+        // ===============================
+        let filterArr = [1, 2, 3, 4];
+        let even = filterArr.filter(v => v % 2 === 0);
+        console.log("9:", even);
+
+        // ===============================
+        // 10. Reduce
+        // ===============================
+        let reduceArr = [1, 2, 3, 4];
+        let sum = reduceArr.reduce((acc, val) => acc + val, 0);
+
+        console.log("10:", sum);
+
+
+        // ===============================
+        // 11. Find / FindIndex
+        // ===============================
+        let findArr = [5, 10, 15];
+
+        console.log("11 find:", findArr.find(v => v > 8));
+        console.log("11 index:", findArr.findIndex(v => v > 8));
+
+
+        // ===============================
+        // 12. Includes / IndexOf
+        // ===============================
+        let checkArr = ["a", "b", "c"];
+
+        console.log("12 includes:", checkArr.includes("b"));
+        console.log("12 indexOf:", checkArr.indexOf("b"));
+
+
+        // ===============================
+        // 13. Join / Split
+        // ===============================
+        let words = ["Hello", "World"];
+        let sentence = words.join(" ");
+
+        console.log("13:", sentence);
+
+
+        // ===============================
+        // 14. Reverse / Sort
+        // ===============================
+        let sortArr = [3, 1, 4, 2];
+
+        sortArr.sort((a, b) => a - b);
+        console.log("14 sorted:", sortArr);
+
+        sortArr.reverse();
+        console.log("14 reversed:", sortArr);
+
+
+        // ===============================
+        // 15. Concat
+        // ===============================
+        let a = [1, 2];
+        let b = [3, 4];
+
+        let combined = a.concat(b);
+        console.log("15:", combined);
+
+
+        // ===============================
+        // 16. Spread Operator (...)
+        // ===============================
+        let spreadArr = [...a, ...b];
+        console.log("16:", spreadArr);
+
+
+        // ===============================
+        // 17. Destructuring
+        // ===============================
+        let [first, second] = [10, 20];
+        console.log("17:", first, second);
+
+
+        // ===============================
+        // 18. Multidimensional Array
+        // ===============================
+        let matrix = [
+            [1, 2],
+            [3, 4]
+        ];
+
+        console.log("18:", matrix[1][0]);
+
+
+        // ===============================
+        // 19. Array.from()
+        // ===============================
+        let str = "hello";
+        let charArr = Array.from(str);
+
+        console.log("19:", charArr);
+
+
+        // ===============================
+        // 20. Array.of()
+        // ===============================
+        let arrOf = Array.of(1, 2, 3);
+        console.log("20:", arrOf);
+
+
+        // ===============================
+        // 21. Every / Some
+        // ===============================
+        let testArr = [2, 4, 6];
+
+        console.log("21 every:", testArr.every(v => v % 2 === 0));
+        console.log("21 some:", testArr.some(v => v > 5));
+
+
+        // ===============================
+        // 22. Fill / CopyWithin
+        // ===============================
+        let fillArr = [1, 2, 3, 4];
+
+        fillArr.fill(0, 1, 3);
+        console.log("22 fill:", fillArr);
+
+        fillArr.copyWithin(1, 2);
+        console.log("22 copyWithin:", fillArr);
+
+
+        // ===============================
+        // 23. Flat / FlatMap
+        // ===============================
+        let nested = [1, [2, [3]]];
+
+        console.log("23 flat:", nested.flat(2));
+
+        let flatMapped = [1, 2, 3].flatMap(v => [v, v * 2]);
+        console.log("23 flatMap:", flatMapped);
+
+
+        // ===============================
+        // 24. Operators with Arrays
+        // ===============================
+
+        // Spread
+        let arrX = [1, 2];
+        let arrY = [...arrX, 3];
+
+        // Rest
+        function sumAll(...nums) {
+            return nums.reduce((a, b) => a + b);
+        }
+        console.log("24 rest:", sumAll(1, 2, 3));
+
+        // Delete (not recommended)
+        let delArr = [1, 2, 3];
+        delete delArr[1];
+        console.log("24 delete:", delArr);
+
+        // typeof
+        console.log("24 typeof:", typeof arrX);
+
+        // Array check
+        console.log("24 isArray:", Array.isArray(arrX));
+
+
+        // ===============================
+        // 25. Convert Array
+        // ===============================
+        let numStr = ["1", "2", "3"];
+        let numbers = numStr.map(Number);
+
+        console.log("25:", numbers);
+
+
+        // =====================================
+        // END OF FILE
+        // =====================================
+    </script>
+</body>
+
+</html>

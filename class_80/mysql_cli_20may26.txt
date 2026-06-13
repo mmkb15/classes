@@ -1,0 +1,80 @@
+Brands
++----+---------+
+| id | name    |
++----+---------+
+|  1 | Apple   |
+|  2 | Samsung |
+|  3 | Techno  |
++----+---------+
+
+Products;
++----+--------------------+----------+-------------+-------+-----------+
+| id | name               | brand_id | category_id | price | is_active |
++----+--------------------+----------+-------------+-------+-----------+
+|  1 | iPhone 14          |        1 |           1 |  1000 |         1 |
+|  2 | Samsung Galaxy S22 |        2 |           1 |   800 |         1 |
+|  3 | Techno X2          |        3 |           2 |   600 |         1 |
+|  4 | Smart Watch 2      |        1 |           2 |   300 |         1 |
+|  5 | Laptop 2           |        1 |           3 |  2000 |         1 |
+|  6 | Smart Watch 3      |        2 |           2 |   400 |         1 |
++----+--------------------+----------+-------------+-------+-----------+
+
+
+
+
+
+
+drop trigger if exists remove_product;
+CREATE trigger remove_product
+after delete on brands
+for each row
+delete from products where brand_id = old.id;
+
+delete from brands where id = 3;
+
+
+
+
+DROP trigger if exists remove_categories;
+CREATE trigger remove_categories
+after delete on categories
+for each row
+delete from products where category_id = old.id;
++-------------------+--------+------------+-------------------------------------------------+--------+------------------------+-----------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+| Trigger           | Event  | Table      | Statement                                       | Timing | Created                | sql_mode                                            | Definer        | character_set_client | collation_connection | Database Collation |
++-------------------+--------+------------+-------------------------------------------------+--------+------------------------+-----------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+| remove_categories | DELETE | categories | delete from products where category_id = old.id | AFTER  | 2026-05-20 10:10:19.00 | NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION | root@localhost | cp850                | cp850_general_ci     | utf8mb4_general_ci |
++-------------------+--------+------------+-------------------------------------------------+--------+------------------------+-----------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+
+
+
+-- Products
++----+--------------------+----------+-------------+-------+-----------+
+| id | name               | brand_id | category_id | price | is_active |
++----+--------------------+----------+-------------+-------+-----------+
+|  1 | iPhone 14          |        1 |           1 |  1000 |         1 |
+|  2 | Samsung Galaxy S22 |        2 |           1 |   800 |         1 |
+|  3 | Techno X2          |        3 |           2 |   600 |         1 |
+|  4 | Smart Watch 2      |        1 |           2 |   300 |         1 |
+|  5 | Laptop 2           |        1 |           3 |  2000 |         1 |
+|  6 | Smart Watch 3      |        2 |           2 |   400 |         1 |
++----+--------------------+----------+-------------+-------+-----------+
+
+
+delete from categories where id = 2;
+-- Categories
++----+--------+
+| id | name   |
++----+--------+
+|  1 | Mobile |
+|  3 | Laptop |
++----+--------+
+
+-- Products
++----+--------------------+----------+-------------+-------+-----------+
+| id | name               | brand_id | category_id | price | is_active |
++----+--------------------+----------+-------------+-------+-----------+
+|  1 | iPhone 14          |        1 |           1 |  1000 |         1 |
+|  2 | Samsung Galaxy S22 |        2 |           1 |   800 |         1 |
+|  5 | Laptop 2           |        1 |           3 |  2000 |         1 |
++----+--------------------+----------+-------------+-------+-----------+

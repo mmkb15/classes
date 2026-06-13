@@ -1,0 +1,574 @@
+B-15@B15 MINGW64 ~
+$ git config user.name
+Hafizur9858
+
+B-15@B15 MINGW64 ~
+$ git config user.email
+hafizur199988@gmail.com
+
+B-15@B15 MINGW64 ~
+$ git config user.password
+
+B-15@B15 MINGW64 ~
+$ git config user.pass
+
+B-15@B15 MINGW64 ~
+$ git config user.name "mustafamursalin"
+fatal: not in a git directory
+
+B-15@B15 MINGW64 ~
+$ git config user.name "mmkb15"
+fatal: not in a git directory
+
+B-15@B15 MINGW64 ~
+$ cd ^V
+bash: cd: $'\026': No such file or directory
+
+B-15@B15 MINGW64 ~
+$ cd E:\WDPF70\xamp\htdocs
+bash: cd: E:WDPF70xamphtdocs: No such file or directory
+
+B-15@B15 MINGW64 ~
+$ cd E:/WDPF70/xamp/htdocs
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git init
+Initialized empty Git repository in E:/WDPF70/xamp/htdocs/.git/
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config --user.name "mmkb15"
+error: unknown option `user.name'
+usage: git config list [<file-option>] [<display-option>] [--includ
+es]
+   or: git config get [<file-option>] [<display-option>] [--includes] [--all] [--regexp] [--value=<pattern>] [--fixed-value] [--default=<default>] [--url=<url>] <name>
+   or: git config set [<file-option>] [--type=<type>] [--all] [--va
+lue=<pattern>] [--fixed-value] <name> <value>
+   or: git config unset [<file-option>] [--all] [--value=<pattern>]
+ [--fixed-value] <name>
+   or: git config rename-section [<file-option>] <old-name> <new-name>
+   or: git config remove-section [<file-option>] <name>
+   or: git config edit [<file-option>]
+   or: git config [<file-option>] --get-colorbool <name> [<stdout-i
+s-tty>]
+
+Config file location
+    --[no-]global         use global config file
+    --[no-]system         use system config file
+    --[no-]local          use repository config file
+    --[no-]worktree       use per-worktree config file
+    -f, --[no-]file <file>
+                          use given config file
+    --[no-]blob <blob-id> read config from given blob object
+
+Action
+    --get                 get value: name [<value-pattern>]
+    --get-all             get all values: key [<value-pattern>]
+    --get-regexp          get values for regexp: name-regex [<value-pattern>]
+    --get-urlmatch        get value specific for the URL: section[.var] URL
+    --replace-all         replace all matching variables: name valu
+e [<value-pattern>]
+    --add                 add a new variable: name value
+    --unset               remove a variable: name [<value-pattern>]
+    --unset-all           remove all matches: name [<value-pattern>]
+    --rename-section      rename section: old-name new-name
+    --remove-section      remove a section: name
+    -l, --list            list all
+    -e, --edit            open an editor
+    --get-color           find the color configured: slot [<default>]
+    --get-colorbool       find the color setting: slot [<stdout-is-tty>]
+
+Display options
+    -z, --[no-]null       terminate values with NUL byte
+    --[no-]name-only      show variable names only
+    --[no-]show-origin    show origin of config (file, standard input, blob, command line)
+    --[no-]show-scope     show scope of config (worktree, local, global, system, command)
+    --[no-]show-names     show config keys in addition to their values
+
+Type
+    -t, --[no-]type <type>
+                          value is given this type
+    --bool                value is "true" or "false"
+    --int                 value is decimal number
+    --bool-or-int         value is --bool or --int
+    --bool-or-str         value is --bool or string
+    --path                value is a path (file or directory name)
+    --expiry-date         value is an expiry date
+
+Other
+    --[no-]default <value>
+                          with --get, use default value when missing entry
+    --[no-]comment <value>
+                          human-readable comment string (# will be prepended as needed)
+    --[no-]fixed-value    use string equality when comparing values to value pattern
+    --[no-]includes       respect include directives on lookup
+
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config --local user.name "mmkb15"
+fatal: --local can only be used inside a git repository
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config --local user.name "mmkb15"
+fatal: --local can only be used inside a git repository
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config user.name
+Hafizur9858
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config user.name 'mmkb15'
+fatal: not in a git directory
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ ^C
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ ^C
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ ^[[200~
+bash: $'\E[200~': command not found
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git init
+Reinitialized existing Git repository in E:/WDPF70/xamp/htdocs/.git/
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config user.email
+hafizur199988@gmail.com
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config user.name
+Hafizur9858
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config user.name "mmkb15"
+fatal: not in a git directory
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config --global user.name "mmkb15"
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config user.name
+mmkb15
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config user.email
+hafizur199988@gmail.com
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config user.email "m49966781@gma^C.com"
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config --global user.email "m49966781@gmail.com"
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config user.gmail
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config user.email
+m49966781@gmail.com
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git add .
+fatal: detected dubious ownership in repository at 'E:/WDPF70/xamp/htdocs'
+'E:/WDPF70/xamp/htdocs' is on a file system that does not record ownership
+To add an exception for this directory, call:
+
+        git config --global --add safe.directory E:/WDPF70/xamp/htdocs
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git^C
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config --global --add safe.directory E:/WDPF70/xamp/htdocs
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (master)
+$ giv add .
+bash: giv: command not found
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (master)
+$ git add .
+warning: in the working copy of 'class-70 image validation, file read-write, home task/students.csv', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class-70 image validation, file read-write, home task/test.txt', LF will be replaced by CRLF the nexttime Git touches it
+warning: in the working copy of 'class_69/class_69.code-workspace', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class_70/class_70.code-workspace', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class_70/students.csv', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class_70/test.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class_71/files/student.csv', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class_74/composer.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class_74/composer.lock', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class_74/vendor/autoload.php', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class_74/vendor/composer/ClassLoader.php', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class_74/vendor/composer/InstalledVersions.php', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class_74/vendor/composer/LICENSE', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class_74/vendor/composer/autoload_classmap.php', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class_74/vendor/composer/autoload_namespaces.php', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class_74/vendor/composer/autoload_psr4.php', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class_74/vendor/composer/autoload_real.php', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class_74/vendor/composer/autoload_static.php', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class_74/vendor/composer/installed.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class_74/vendor/composer/installed.php', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'class_74/vendor/composer/platform_check.php', LF will be replaced by CRLF the next time Git touches it
+warning: adding embedded git repository: class_74/vendor/phpmailer/phpmailer
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint:
+hint:   git submodule add <url> class_74/vendor/phpmailer/phpmailer
+hint:
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint:
+hint:   git rm --cached class_74/vendor/phpmailer/phpmailer
+hint:
+hint: See "git help submodule" for more information.
+hint: Disable this message with "git config set advice.addEmbeddedRepo false"
+warning: in the working copy of 'tryClass/files/student.csv', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'xm/xm.code-workspace', LF will be replaced by CRLF the next time Git touches it
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (master)
+$ ^C
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (master)
+$ git commit -m "catopia"
+[master (root-commit) e793351] catopia
+ 160 files changed, 5066 insertions(+)
+ create mode 100644 1295365/1.largestNum.php
+ create mode 100644 1295365/2.student-search.php
+ create mode 100644 1295365/3.primeNum.php
+ create mode 100644 Assignment_05.05.2026/arrayTry.php
+ create mode 100644 Assignment_05.05.2026/students.php
+ create mode 100644 Rion's homework 06-May-26/Rion's homework 06-May-26/image-upload.php
+ create mode 100644 Rion's homework 06-May-26/Rion's homework 06-May-26/uploads/295337479_183940740680935_2206576300652110331_n.jpg
+ create mode 100644 Rion's homework 06-May-26/Rion's homework 06-May-26/uploads/444486801_876545471168501_3078432317300330297_n.jpg
+ create mode 100644 Rion's homework 06-May-26/Rion's homework 06-May-26/uploads/646436998_1269667758692330_2778278904981679559_n.jpg
+ create mode 100644 Rion's homework 06-May-26/Rion's homework 06-May-26/uploads/Screenshot 2026-04-26 112123.png
+ create mode 100644 class-70 image validation, file read-write, home task/csv-file.php
+ create mode 100644 class-70 image validation, file read-write, home task/file.php
+ create mode 100644 class-70 image validation, file read-write, home task/files/test.txt
+ create mode 100644 class-70 image validation, file read-write, home task/home-task/create.php
+ create mode 100644 class-70 image validation, file read-write, home task/home-task/files/student.class.php
+ create mode 100644 class-70 image validation, file read-write, home task/home-task/files/student.csv
+ create mode 100644 class-70 image validation, file read-write, home task/home-task/list.php
+ create mode 100644 class-70 image validation, file read-write, home task/home-task/search.php
+ create mode 100644 class-70 image validation, file read-write, home task/image-upload.php
+ create mode 100644 class-70 image validation, file read-write, home task/students.csv
+ create mode 100644 class-70 image validation, file read-write, home task/test.txt
+ create mode 100644 class-70 image validation, file read-write, home task/uploads/ASI-ANI-AGI-types-of-AI.jpg
+ create mode 100644 class-70 image validation, file read-write, home task/uploads/Image.png
+ create mode 100644 class-70 image validation, file read-write, home task/uploads/eCommerce-Website-Components-photo.jpg
+ create mode 100644 class-70 image validation, file read-write, home task/uploads/image200x200.png
+ create mode 100644 class_58/basic.php
+ create mode 100644 class_58/data-casting.php
+ create mode 100644 class_58/datatype.php
+ create mode 100644 class_58/operator.php
+ create mode 100644 class_58/referance-variable.php
+ create mode 100644 class_58/super-global-var.php
+ create mode 100644 class_58/type-juggling.php
+ create mode 100644 class_59/control_structure.php
+ create mode 100644 class_59/escape-sequences.php
+ create mode 100644 class_59/files/file1.php
+ create mode 100644 class_59/files/file2.php
+ create mode 100644 class_59/hereDoc-nowDoc.php
+ create mode 100644 class_59/include.php
+ create mode 100644 class_60/first-page.php
+ create mode 100644 class_60/fun-return type.php
+ create mode 100644 class_60/fun-return.php
+ create mode 100644 class_60/function.php
+ create mode 100644 class_60/second-page.php
+ create mode 100644 class_61/array-push-pop.php
+ create mode 100644 class_61/array-sort.php
+ create mode 100644 class_61/array-type.php
+ create mode 100644 class_61/array.php
+ create mode 100644 class_61/is-in-array.php
+ create mode 100644 class_61/list.php
+ create mode 100644 class_61/user-defined-sort.php
+ create mode 100644 class_62/arrary-rev.php
+ create mode 100644 class_62/array-slice-splice.php
+ create mode 100644 class_62/array.php
+ create mode 100644 class_62/traversing.php
+ create mode 100644 class_63/child-class.php
+ create mode 100644 class_63/class.php
+ create mode 100644 class_63/form.php
+ create mode 100644 class_63/magic-function.php
+ create mode 100644 class_63/max.php
+ create mode 100644 class_63/submit.php
+ create mode 100644 class_64/child-class.php
+ create mode 100644 class_64/scpope.php
+ create mode 100644 class_64/user-infor.php
+ create mode 100644 class_64/voting-right.php
+ create mode 100644 class_65/abstruct-class.php
+ create mode 100644 class_65/class-getter-setter.php
+ create mode 100644 class_65/classes/user.php
+ create mode 100644 class_65/factorial.php
+ create mode 100644 class_65/grade.php
+ create mode 100644 class_65/interface.php
+ create mode 100644 class_65/lib/user.php
+ create mode 100644 class_65/sort.php
+ create mode 100644 class_65/string-concate.php
+ create mode 100644 class_65/trait.php
+ create mode 100644 class_65/user.php
+ create mode 100644 class_66/paraWordChange.php
+ create mode 100644 class_66/regexp.php
+ create mode 100644 class_66/string.php
+ create mode 100644 class_67/file-upload.php
+ create mode 100644 class_67/paraWordChange.php
+ create mode 100644 class_67/str_replace.php
+ create mode 100644 class_68/checkbox.php
+ create mode 100644 class_68/image-upload.php
+ create mode 100644 class_68/student-score copy.php
+ create mode 100644 class_68/student-score.php
+ create mode 100644 class_68/uploads/PHP Evidence 1.docx
+ create mode 100644 class_68/uploads/WhatsApp Image 2026-04-28 at 12.18.08 PM.jpeg
+ create mode 100644 class_69/class/student.class.php
+ create mode 100644 class_69/class_69.code-workspace
+ create mode 100644 class_69/image-upload.php
+ create mode 100644 class_69/search.php
+ create mode 100644 class_69/uploads/34665994_18_asfasw112.jpg
+ create mode 100644 class_69/uploads/A SPECIAL BIRTHDAY GIFT FOR YOU.pdf
+ create mode 100644 class_69/uploads/IDB.docx
+ create mode 100644 class_69/uploads/PHP_Evidence_Questions.docx
+ create mode 100644 class_69/uploads/Screenshot 2026-04-26 112123.png
+ create mode 100644 class_69/uploads/Screenshot 2026-04-26 113754.docx
+ create mode 100644 class_69/uploads/Screenshot 2026-04-26 113754.png
+ create mode 100644 class_69/uploads/Screenshot 2026-05-05 092137.png
+ create mode 100644 class_69/uploads/download (1).jfif
+ create mode 100644 class_69/uploads/download.jfif
+ create mode 100644 class_69/uploads/image2.png
+ create mode 100644 class_70/class_70.code-workspace
+ create mode 100644 class_70/csv-file.php
+ create mode 100644 class_70/file.php
+ create mode 100644 class_70/image-uploaded.php
+ create mode 100644 class_70/students.csv
+ create mode 100644 class_70/test.txt
+ create mode 100644 class_70/uploads/Screenshot 2026-04-26 113754.docx
+ create mode 100644 class_71/authentication.php
+ create mode 100644 class_71/create.php
+ create mode 100644 class_71/files/student.class.php
+ create mode 100644 class_71/files/student.csv
+ create mode 100644 class_71/list.php
+ create mode 100644 class_71/login.php
+ create mode 100644 class_71/logout.php
+ create mode 100644 class_71/search.php
+ create mode 100644 class_71/session.php
+ create mode 100644 class_72/form-old-value.php
+ create mode 100644 class_72/phpinfo.php
+ create mode 100644 class_73/another-session.php
+ create mode 100644 class_73/dashboard.php
+ create mode 100644 class_73/error.log
+ create mode 100644 class_73/error.php
+ create mode 100644 class_73/login.php
+ create mode 100644 class_73/logout.php
+ create mode 100644 class_73/report.php
+ create mode 100644 class_73/session.php
+ create mode 100644 class_74/composer.json
+ create mode 100644 class_74/composer.lock
+ create mode 100644 class_74/email.php
+ create mode 100644 class_74/send-mail.php
+ create mode 100644 class_74/vendor/autoload.php
+ create mode 100644 class_74/vendor/composer/ClassLoader.php
+ create mode 100644 class_74/vendor/composer/InstalledVersions.php
+ create mode 100644 class_74/vendor/composer/LICENSE
+ create mode 100644 class_74/vendor/composer/autoload_classmap.php
+ create mode 100644 class_74/vendor/composer/autoload_namespaces.php
+ create mode 100644 class_74/vendor/composer/autoload_psr4.php
+ create mode 100644 class_74/vendor/composer/autoload_real.php
+ create mode 100644 class_74/vendor/composer/autoload_static.php
+ create mode 100644 class_74/vendor/composer/installed.json
+ create mode 100644 class_74/vendor/composer/installed.php
+ create mode 100644 class_74/vendor/composer/platform_check.php
+ create mode 160000 class_74/vendor/phpmailer/phpmailer
+ create mode 100644 class_75/table create cmd.txt
+ create mode 100644 try/factorial.php
+ create mode 100644 try/largest.php
+ create mode 100644 try/prime.php
+ create mode 100644 tryClass/create.php
+ create mode 100644 tryClass/files/student.class.php
+ create mode 100644 tryClass/files/student.csv
+ create mode 100644 tryClass/list.php
+ create mode 100644 tryClass/search.php
+ create mode 100644 xm/Screenshot 2026-05-06 130152.png
+ create mode 100644 xm/TCLK Round (1).pdf
+ create mode 100644 xm/download (1).jpeg
+ create mode 100644 xm/upload.php
+ create mode 100644 xm/username.php
+ create mode 100644 xm/xm.code-workspace
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (master)
+$ git branch -M main
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (main)
+$ git remote add b15 https://github.com/mmkb15/empty.git
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (main)
+$ git push -u b15 main
+remote: Permission to mmkb15/empty.git denied to Hafizur9858.
+fatal: unable to access 'https://github.com/mmkb15/empty.git/': The requested URL returned error: 403
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (main)
+$ git config user.name
+mmkb15
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (main)
+$ git push -u b15 main
+remote: Permission to mmkb15/empty.git denied to Hafizur9858.
+fatal: unable to access 'https://github.com/mmkb15/empty.git/': The requested URL returned error: 403
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (main)
+$ ^C
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (main)
+$
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (main)
+$ git push -u b15 main
+remote: Permission to mmkb15/empty.git denied to Hafizur9858.
+fatal: unable to access 'https://github.com/mmkb15/empty.git/': The requested URL returned error: 403
+
+bash: syntax error near unexpected token `('
+bash: $: command not found
+bash: remote:: command not found
+bash: fatal:: command not found
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (main)
+$
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (main)
+$ git push -u
+fatal: The current branch main has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream b15 main
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (main)
+$ git push -u b15 main
+Enumerating objects: 191, done.
+Counting objects: 100% (191/191), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (178/178), done.
+Writing objects: 100% (191/191), 2.99 MiB | 1.48 MiB/s, done.
+Total 191 (delta 12), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (12/12), done.
+To https://github.com/mmkb15/empty.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'b15/main'.
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (main)
+$ git status
+On branch main
+Your branch is up to date with 'b15/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        class_75/git.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (main)
+$ git push
+Everything up-to-date
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (main)
+$ git status
+On branch main
+Your branch is up to date with 'b15/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        class_75/git.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (main)
+$ git status
+On branch main
+Your branch is up to date with 'b15/main'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    1295365/1.largestNum.php
+        deleted:    1295365/2.student-search.php
+        deleted:    1295365/3.primeNum.php
+        deleted:    Assignment_05.05.2026/arrayTry.php
+        deleted:    Assignment_05.05.2026/students.php
+        deleted:    Rion's homework 06-May-26/Rion's homework 06-May-26/image-upload.php
+        deleted:    Rion's homework 06-May-26/Rion's homework 06-May-26/uploads/295337479_183940740680935_2206576300652110331_n.jpg
+        deleted:    Rion's homework 06-May-26/Rion's homework 06-May-26/uploads/444486801_876545471168501_3078432317300330297_n.jpg
+        deleted:    Rion's homework 06-May-26/Rion's homework 06-May-26/uploads/646436998_1269667758692330_2778278904981679559_n.jpg
+        deleted:    Rion's homework 06-May-26/Rion's homework 06-May-26/uploads/Screenshot 2026-04-26 112123.png
+        deleted:    xm/Screenshot 2026-05-06 130152.png
+        deleted:    xm/TCLK Round (1).pdf
+        deleted:    xm/download (1).jpeg
+        deleted:    xm/upload.php
+        deleted:    xm/username.php
+        deleted:    xm/xm.code-workspace
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        #Assignment/
+        #Exam/
+        #tMeet/
+        class_75/git.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (main)
+$ git add .
+warning: in the working copy of '#Exam/xm/xm.code-workspace', LF will be replaced by CRLF the next time Git touches it
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (main)
+$ git commit -m "newtopia"
+[main 5baf1e7] newtopia
+ 17 files changed, 36 insertions(+)
+ rename {Assignment_05.05.2026 => #Assignment/Assignment_05.05.2026}/arrayTry.php (100%)
+ rename {Assignment_05.05.2026 => #Assignment/Assignment_05.05.2026}/students.php (100%)
+ rename {1295365 => #Exam/1295365}/1.largestNum.php (100%)
+ rename {1295365 => #Exam/1295365}/2.student-search.php (100%)
+ rename {1295365 => #Exam/1295365}/3.primeNum.php (100%)
+ rename {xm => #Exam/xm}/Screenshot 2026-05-06 130152.png (100%)
+ rename {xm => #Exam/xm}/TCLK Round (1).pdf (100%)
+ rename {xm => #Exam/xm}/download (1).jpeg (100%)
+ rename {xm => #Exam/xm}/upload.php (100%)
+ rename {xm => #Exam/xm}/username.php (100%)
+ rename {xm => #Exam/xm}/xm.code-workspace (100%)
+ rename {Rion's homework 06-May-26 => #tMeet/Rion's homework 06-May-26}/Rion's homework 06-May-26/image-upload.php (100%)
+ rename {Rion's homework 06-May-26 => #tMeet/Rion's homework 06-May-26}/Rion's homework 06-May-26/uploads/295337479_183940740680935_2206576300652110331_n.jpg (100%)
+ rename {Rion's homework 06-May-26 => #tMeet/Rion's homework 06-May-26}/Rion's homework 06-May-26/uploads/444486801_876545471168501_3078432317300330297_n.jpg (100%)
+ rename {Rion's homework 06-May-26 => #tMeet/Rion's homework 06-May-26}/Rion's homework 06-May-26/uploads/646436998_1269667758692330_2778278904981679559_n.jpg (100%)
+ rename {Rion's homework 06-May-26 => #tMeet/Rion's homework 06-May-26}/Rion's homework 06-May-26/uploads/Screenshot 2026-04-26 112123.png (100%)
+ create mode 100644 class_75/git.txt
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (main)
+$ git push
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (7/7), 857 bytes | 857.00 KiB/s, done.
+Total 7 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/mmkb15/empty.git
+   e793351..5baf1e7  main -> main
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs (main)
+$ git status
+On branch main
+Your branch is up to date with 'b15/main'.
+
+nothing to commit, working tree clean

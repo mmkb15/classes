@@ -1,0 +1,22 @@
+ PHP Evidences
+
+1	Write a program in PHP which will validate a login registration system using form                                      
+
+•	User name must be between 4 to 8 digit
+•	must be ‘@’ symbol
+
+2	Create a class named student where fields are id, name, batch and one method result which will take id as parameter and search the corresponding result from a file and print result. Must use constructor to initialize the data and print a result.                                                                                                                                    
+
+3	Check whether a number is prime or not?
+
+4	Find out largest value among five numbers?
+
+5	Create a PHP script to upload a particular type of file to the server and limit the file size to 400 KB (File type can be PDF/IMAGE/Document file).                                                                                                                               
+
+6	Create an associative array of 5 elements where index will be country name and value will be corresponding capital name. Sort the array by country name and print.                                              
+
+7	Create a program that reads a grade, A, B, C, D or F and then print “excellent,” “good,” “fair,” “poor,” or “failure.” Use the else if structure.  
+
+8	Find out Factorial
+
+9	Create an associative array of 5 elements where index will be Student name and value will be corresponding score. Present a result sheet using table. Find out the maximum score and student name.                                               

@@ -1,0 +1,202 @@
+//////////////////////////////////////////////
+//Class 75
+// Open directory of Mysql in xampp
+cd /d DriveLetter:\xampp\mysql\bin
+
+//Run Mysql
+mysql -u root -p
+
+//create database
+create database NewDatabaseName;
+
+//Delete database
+drop database DatabaseName;
+
+//Select database
+use DatabaseName;
+
+//Show tables
+show tables;
+
+//Create table
+create table TableNameInPlural
+(
+ ColumnName DataType Attribute(optional),   
+ ColumnName DataType Attribute(optional),  
+ ColumnName DataType Attribute(optional)   
+);
+
+   // Example
+    create table students
+    (
+    id int unsigned primary key auto_increment,
+    name varchar(100) not null,
+    email varchar(120) unique,
+    address varchar(255),
+    is_inactive tinyint default 0
+    );
+
+// Show particulat table  
+describe TableName;
+OR
+desc TableName;
+
+// Delete Table
+drop table TableName;
+
+//////////////////////////////////////////////
+//Class 76
+
+// Create database if that database does not exists
+create database if not exists DatabaseName
+
+// Delete database if that database exists
+drop database if exists DatabaseName
+
+// Show every data from a table
+select * from TableName;
+
+// Insert data into table
+insert into TableName(ColumnName, ColumnName, ColumnName,ColumnName) values (Data, 'Data', 'Data', Data);
+  //Example
+    insert into students(name, address, email,is_inactive) values('Mina', 'Mirpur', 'mina@example.com', 0);
+    
+
+//////////////////////////////////////////////////
+//Class 78
+
+//Show specific column data
+SELECT ColumnName FROM TableName; 
+
+// Show multiple column data based on a condition
+select ColumnName1, ColumnName2 from TableName where Condtion=CondtionValue;
+
+//Show specific column data ordered ascending or descending
+SELECT ColumnName FROM TableName ORDER BY ColumnName ASC;
+SELECT ColumnName FROM TableName ORDER BY ColumnName DESC;
+
+// Update a row data
+UPDATE TableName SET ColumnName1="UpdatedValue", ColumnName1="UpdatedValue"  WHERE ColumnName="CurrentValue";
+
+  //Example
+  UPDATE students SET name="Ali", email="ali@gmail.com" WHERE id=9;
+
+// Delete a row data
+DELETE FROM TableName WHERE ColumnName=Value;
+
+// Add a column in a existing table
+ALTER TABLE TableName ADD COLUMN NewCloumnName NewCloumnType NewCloumnAttribute Positon(BEFORE/AFTER) ColumnName;
+
+  //Example
+  ALTER TABLE students ADD COLUMN phone varchar(20) AFTER email;
+
+// Rename a column name
+ALTER TABLE TableName CHANGE CurrentColumnName NewColumnName ColumnDataType;
+
+  //Example
+  ALTER TABLE students CHANGE name full_name VARCHAR(255);
+
+
+// Delete a column name
+  ALTER TABLE students
+  DROP COLUMN phone
+
+
+
+
+INSERT INTO results(student_id, score, exam_type)
+values (1, 90, "Mid-1");
+
+INSERT INTO results(student_id, score, exam_type)
+values (2, 80, "Mid-1");
+
+INSERT INTO results(student_id, score, exam_type)
+values (4, 35, "Mid-1");
+
+INSERT INTO results(student_id, score, exam_type)
+values (6, 20, "Mid-1");
+
+INSERT INTO results(student_id, score, exam_type)
+values (9, 88, "Mid-2");
+
+INSERT INTO results(student_id, score, exam_type)
+values (12, 33, "Mid-2");
+
+INSERT INTO results(student_id, score, exam_type)
+values (1, 45, "Mid-2");
+
+INSERT INTO results(student_id, score, exam_type)
+values (1, 80, "Final");
+
+INSERT INTO results(student_id, score, exam_type)
+    values (18, 20, "Mid-1");
+
+
+//Joining two differnect tables data
+select res.student_id, stu.full_name name, res.score mark, res.exam_type
+from students as stu, results as res
+where res.student_id = stu.id and res.exam_type = "Mid-1";
+
+
+
+create view vw_student_results as
+select res.student_id, stu.full_name name, res.score mark, res.exam_type
+from students as stu, results as res
+where res.student_id = stu.id;
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Create table
+create table TableNameInPlural
+(
+ ColumnName DataType Attribute(optional),   
+ ColumnName DataType Attribute(optional),  
+ ColumnName DataType Attribute(optional)   
+);
+
+   // Example
+    create table students
+    (
+    id int unsigned primary key auto_increment,
+    name varchar(100) not null,
+    email varchar(120) unique,
+    address varchar(255),
+    is_inactive tinyint default 0
+    );
+
+
+CREATE TABLE brands
+(
+	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(100) NOT NULL
+);
+
+
+CREATE TABLE categories
+(
+	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(100) NOT NULL
+);
+
+
+CREATE TABLE products
+(
+	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	product_name VARCHAR(100) NOT NULL,
+	brand_id INT UNSIGNED NOT NULL,
+	category_id INT UNSIGNED NOT NULL,
+	price DECIMAL(10,2) NOT NULL,
+	is_active BOOLEAN DEFAULT TRUE
+);
+
+

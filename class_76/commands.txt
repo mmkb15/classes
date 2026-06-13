@@ -1,0 +1,8 @@
+create table if not exists results(
+    id int(10) unsigned primary key auto_increment,
+    student_id int,
+    score float default 0,
+    exam_type varchar(100)
+)
+
+crud - create , read, update , delete;

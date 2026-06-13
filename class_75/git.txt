@@ -1,0 +1,36 @@
+proble
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config user.name
+Hafizur9858
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config user.name "mmkb15"
+fatal: not in a git directory
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config --global user.name "mmkb15"
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config user.name
+mmkb15
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config user.email
+hafizur199988@gmail.com
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config user.email "m49966781@gma^C.com"
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config --global user.email "m49966781@gmail.com"
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config user.gmail
+
+B-15@B15 MINGW64 /e/WDPF70/xamp/htdocs
+$ git config user.email
+m49966781@gmail.com
+
+
+
+git config --global --add safe.directory E:/WDPF70/xamp/htdocs

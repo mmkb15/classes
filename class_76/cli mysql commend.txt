@@ -1,0 +1,34 @@
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| meena_db           |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [(none)]> create database my_data;
+Query OK, 1 row affected (0.045 sec)
+
+MariaDB [(none)]> create database if not exists my_data;
+Query OK, 0 rows affected, 1 warning (0.000 sec)
+
+MariaDB [(none)]> create database my_data;
+ERROR 1007 (HY000): Can't create database 'my_data'; database exists
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| meena_db           |
+| my_data            |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------

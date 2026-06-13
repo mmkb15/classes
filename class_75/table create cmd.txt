@@ -1,0 +1,64 @@
+
+
+--  Login Database
+MySQL -u root -p;
+
+-- Show Databases
+show databases;
+
+-- Create Database
+create database db_name;
+
+-- Delete Database
+Drop database db_name;
+
+-- Use Database
+use db_name;
+
+-- Show Tables
+show tables;
+-- Create Table
+create table students
+--create table
+CREATE TABLE students ( 
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE,
+    address VARCHAR(255),
+    is_inactive TINYINT DEFAULT 0
+);
+
+
+--create table if not exists users(
+    id int(10) UNSIGNED primary key AUTO_INCREMENT,
+    name VARCHAR(100) not NULL,
+    email VARCHAR(100) UNIQUE,
+    password VARCHAR(255)
+);
+
+
+-- access table
+describe students 
+--
+
+-- Exit or Quit
+exit    
+\q
+
+-- CRUD- Create, Read, Update, Delete
+
+insert into students(name, address, email, is_inactive)
+values ("Mina", "Mirpur", "mina@example.com", 0);
+
+insert into students(name, address, email, is_inactive)
+values ("Raju", "Japan", "JapanRaju@example.com", 1);
+
+insert into students(name, address, email, is_inactive)
+values ("Rita", "Canada", "CanadaRita@example.com", 0);
+
+insert into students(name, address, email, is_inactive)
+values ("Lali", "Gabtuli", "deshiCow@example.com", 1);
+
+
+
+#column_name datatype attributes(optional)

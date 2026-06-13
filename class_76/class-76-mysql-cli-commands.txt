@@ -1,0 +1,63 @@
+// Open directory of Mysql in xampp
+cd /d DriveLetter:\xampp\mysql\bin
+
+//Run Mysql
+mysql -u root -p
+
+//create database
+create database NewDatabaseName;
+
+//Delete database
+drop database DatabaseName;
+
+//Select database
+use DatabaseName;
+
+//Show tables
+show tables;
+
+//Create table
+create table TableNameInPlural
+(
+ ColumnName DataType Attribute(optional),   
+ ColumnName DataType Attribute(optional),  
+ ColumnName DataType Attribute(optional)   
+);
+
+   // Example
+    create table students
+    (
+    id int unsigned primary key auto_increment,
+    name varchar(100) not null,
+    email varchar(120) unique,
+    address varchar(255),
+    is_inactive tinyint default 0
+    );
+
+// Show particulat table  
+describe TableName;
+OR
+desc TableName;
+
+// Delete Table
+drop table TableName;
+
+//////////////////////////////////////////////
+
+// Create database if that database does not exists
+create database if not exists DatabaseName
+
+// delete database if that database exists
+drop database if exists DatabaseName
+
+// show every data from a table
+select * from TableName;
+
+// insert data into table
+insert into TableName(ColumnName, ColumnName, ColumnName,ColumnName) values (Data, 'Data', 'Data', Data);
+  //Example
+    insert into students(name, address, email,is_inactive) values ('Mina', 'Mirpur', 'mina@example.com', 0);
+    insert into students(name, address, email,is_inactive) values ('Dipu', 'Motijheel', 'dipu@example.com', 0);
+    insert into students(name, address, email,is_inactive) values ('Lali', 'Chittagong', 'lali@example.com', 0);
+    insert into students(name, address, email,is_inactive) values ('Raju', 'Mothijheel', 'raju@example.com', 0);
+    insert into students(name, address, email,is_inactive) values ('Mithu', 'Ramna', 'mithu@example.com', 0);
