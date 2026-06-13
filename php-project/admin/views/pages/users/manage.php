@@ -50,10 +50,11 @@ echo '</pre>';
                         </tr>
                     </thead>
                     <tbody>
+                      <?php foreach($rows as $item) : ?>
                         <tr>
-                            <td>1.</td>
-                            <td>Update software</td>
-                            <td>abc@expmle.com</td>
+                            <td><?= $item['id'] ?></td>
+                            <td><?= $item['name'] ?></td>
+                            <td><?= $item['email'] ?></td>
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default"><i class="fa fa-eye text-primary"></i></button>
@@ -62,6 +63,7 @@ echo '</pre>';
                                 </div>
                             </td>
                         </tr>
+                        <?php endforeach;?>
                     </tbody>
                     </table>
                 </div>       

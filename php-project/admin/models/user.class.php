@@ -38,7 +38,7 @@ class User
     }
     static public function readAll(){
         global $db;
-        $sql = "SELECT id, name, email FROM users";
+        $sql = "SELECT id, name, email FROM users order by id desc";
         $result = $db->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
