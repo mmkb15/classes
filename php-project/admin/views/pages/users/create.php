@@ -1,6 +1,14 @@
 
 <?php
 require_once 'models/user.class.php';
+require_once 'models/role.class.php';
+
+
+$roles = Role::readAll();
+
+// echo '<pre>';
+// print_r($roles);
+// echo '</pre>';
 
 if(isset($_POST['btn-submit'])){
   $name = $_POST['name'];
@@ -16,7 +24,7 @@ if(isset($_POST['btn-submit'])){
     $user = new User(null, $name, $email, $role_ID, $pass);
     $res = $user->create();
     if($res === true){
-      $msg = "<h3 style='color:green'>User Created Successfully<h3>";
+      $msg = "<h3 style='color:green'> User Created Successfully<h3>";
     }else{
       $msg = $res;
     }
@@ -56,11 +64,12 @@ if(isset($_POST['btn-submit'])){
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+        <a href="users" class="btn-sm btn-dark px-4 py-2 mb-3 d-inline-block">&leftarrow; Back</a>
         <div class="row">
           <div class="col-12">
 
             <div class="card card-primary">
-              <?=  $msg ?? "" ?>
+              <?=  $msg ?? ""; ?>
                 <!-- form start -->
                 <form method="POST">
                     <div class="card-body">
@@ -75,9 +84,9 @@ if(isset($_POST['btn-submit'])){
                         <div class="form-group">
                             <label for="role_ID">Role</label>
                             <select class="form-control" name="role_ID" id="role_ID">
-                                <option value="1">Admin</option>
-                                <option value="2">Editor</option>
-                                <option value="3">Vender</option>
+                              <?php foreach($roles as $role) : ?>
+                                <option value="<?= $role['id'] ?>"><?= $role['name'] ?></option>
+                              <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="form-group">

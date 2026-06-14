@@ -1,10 +1,23 @@
 
 <?php
 require_once 'models/user.class.php';
+
+if(isset($_POST['delete_id'])){
+  $id = $_POST['delete_id'];
+  $res = User::delete($id);
+
+  if($res === true){
+      $msg = "User Deleted Successfully";
+    }else{
+      $msg = $res;
+    }
+}
+
+
 $rows = User::readAll();
-echo '<pre>';
-print_r($rows);
-echo '</pre>';
+// echo '<pre>';
+// print_r($rows);
+// echo '</pre>';
 
 ?>
 
@@ -31,12 +44,22 @@ echo '</pre>';
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+        
         <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <a href="" class="btn btn-sm btn-dark">Create User</a>
+                <a href="create-user" class="btn btn-dark">Create User</a>
+
+                <?php if(isset($msg)) : ?>
+                <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                  <?=  $msg ?? "" ?>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
               </div>
+              <?php endif;  ?>
               <!-- /.card-header -->
               <div class="card-body p-0">
                 <div class="table-responsive">
@@ -58,8 +81,11 @@ echo '</pre>';
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default"><i class="fa fa-eye text-primary"></i></button>
-                                    <button type="button" class="btn btn-default"><i class="fa fa-edit text-success"></i></button>
-                                    <button type="button" class="btn btn-default"><i class="fa fa-trash text-danger"></i></button>
+                                    <a href="edit-user?id=<?= $item['id']; ?>"><button type="button" class="btn btn-default"><i class="fa fa-edit text-success"></i></button></a>
+                                    <form method="POST">
+                                      <input type="hidden" name="delete_id" value="<?= $item['id'] ?>">
+                                      <button type="submit" class="btn btn-default"><i class="fa fa-trash text-danger"></i></button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
