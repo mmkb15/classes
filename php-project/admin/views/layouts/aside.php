@@ -51,7 +51,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a href="table" class="nav-link ">
+            <a href="products" class="nav-link ">
               <i class="nav-icon fa fa-box"></i>
               <p>
                 Products
