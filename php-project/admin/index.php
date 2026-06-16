@@ -1,45 +1,21 @@
-<?php
+<?php 
 include_once 'config/base.php';
-require_once 'config/db.php';
+include_once 'config/db.php';
 ?>
-
-
-<!-- header -->
-<?php include_once 'views/layouts/head.php'; ?>
-<!-- /.header -->
-
-<!-- wrapper -->
+<?php include_once('views/layouts/head.php'); ?>
 <div class="wrapper">
 
   <!-- Preloader -->
-  <!-- <?php //include_once 'views/layouts/preloader.php'; ?> -->
+  <?php //include_once('views/layouts/preloader.php'); ?>
 
-  <!-- Navbar -->
-  <?php include_once 'views/layouts/nav.php'; ?>
-  <!-- /.navbar -->
+  <?php include('views/layouts/nav.php'); ?>
+  <?php include('views/layouts/aside.php'); ?>
 
-  <!-- aside -->
-  <?php include_once 'views/layouts/aside.php'; ?>
-  <!-- /.aside -->
-
-
-  <!-- Page Content -->
-  <?php include_once 'route.php'; ?>
-  <!-- /.Page Content -->
-
-  <!-- footer -->
-  <?php include_once 'views/layouts/footer.php'; ?>
-  <!-- /.footer -->
-
-
-  <!-- Control Sidebar -->
-  <?php include_once 'views/layouts/control-sidebar.php'; ?>
-  <!-- /.control-sidebar -->
+  <!-- Page content -->
+  <?php include('route.php'); ?>
+  <!-- /.Page content -->
    
+  <?php include_once('views/layouts/footer.php'); ?>
 </div>
-<!-- ./wrapper -->
 
-
-<!-- foot -->
-<?php include_once 'views/layouts/foot.php'; ?>
-<!-- /.foot -->
+<?php include_once('views/layouts/foot.php'); ?>

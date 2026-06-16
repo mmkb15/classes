@@ -1,65 +1,57 @@
-
 <?php
+require_once 'helpers/img-upload-helper.php';
 require_once 'models/product.class.php';
-require_once 'models/brand.class.php';
 require_once 'models/category.class.php';
+require_once 'models/brand.class.php';
 
-
+$categories = Category::readAll();
 $brands = Brand::readAll();
-$category = Category::readAll();
-
 // echo '<pre>';
 // print_r($roles);
 // echo '</pre>';
 
+if(isset($_POST['btn_submit'])){
+  $name               = $_POST['name'];
+  $category_id        = $_POST['category_id'];
+  $brand_id           = $_POST['brand_id'];
+  $price              = $_POST['price'];
+  $quantity           = $_POST['qty'];
+  $point_of_restock   = $_POST['restock'];
+  $active             = isset($_POST['active']) ? 1 : 0;
+  $short_description  = $_POST['desc'];
 
-
-if (isset($_POST['btn-submit'])) {
-
-    $name         = $_POST['name'];
-    $brand_id     = $_POST['brand_id'];
-    $category_id  = $_POST['category_id'];
-    $price        = $_POST['price'];
-    $qty          = $_POST['qty'];
-    $restock      = $_POST['restock'];
-    $short_desc      = $_POST['short_desc'];
-
-    // Checkbox value
-    $is_active = isset($_POST['is_active']) ? 1 : 0;
-
-    // File upload
-    // $image = $_FILES['image']['name'] ?? '';
-
-    echo "Name: " . $name . "<br>";
-    echo "Brand id: " . $brand_id . "<br>";
-    echo "Category id: " . $category_id . "<br>";
-    echo "Price: " . $price . "<br>";
-    echo "Quantity: " . $qty . "<br>";
-    echo "Restock Point: " . $restock . "<br>";
-    echo "short_desc: " . $short_desc . "<br>";
-    // echo "Image: " . $image . "<br>";
-    echo "Is Active: " . $is_active . "<br>";
-
-    $product = new Product(null, $name, $brand_id, $category_id, $price, $qty, $restock, $is_active );
+  // print_r($_FILES['image']);
+  $file = isset($_FILES['image']) ? $_FILES['image'] : [];
+  $image = imgUpload($file);
+  // print_r($image);
+  if(isset($image['error'])){
+    $msg = $image['error'];
+  }else{
+    $image_path = $image['success'];
+    $product = new Product(null, $name, $category_id, $brand_id, $price, $quantity, $point_of_restock, $active, $image_path, $short_description);
     $product->create();
+    $msg = "Product created successfully";
+  }
+  // echo $active;
 
+  // $product = new Product(null, $name, $category_id, $brand_id, $price, $quantity, $point_of_restock, $active, null, $short_description);
+  // $product->create();
+  // $msg = "Product created successfully";
 }
-
-
 ?>
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Create Products</h1>
+            <h1>Create Product</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Simple Tables</li>
+              <li class="breadcrumb-item active">Products</li>
             </ol>
           </div>
         </div>
@@ -69,75 +61,69 @@ if (isset($_POST['btn-submit'])) {
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <a href="products" class="btn-sm btn-dark px-4 py-2 mb-3 d-inline-block">&leftarrow; Back</a>
+        <a href="products" class="btn btn-sm btn-dark">&leftarrow; Back</a>
         <div class="row">
           <div class="col-12">
-
+            <h4><?= $msg ?? "" ?></h4>
             <div class="card card-primary">
-              <?=  $msg ?? ""; ?>
-                <!-- form start -->
-                <form method="POST">
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="name_id">Name</label>
-                            <input type="text" name="name" class="form-control" id="name_id">
-                        </div>
-                        <div class="form-group">
-                            <label for="brand_id">Brand</label>
-                            <select class="form-control" name="brand_id" id="brand_id">
-                              <?php foreach($brands as $item) :  ?>
-                                <option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>
-                              <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="category_id">Category</label>
-                            <select class="form-control" name="category_id" id="category_id">
-                              <?php foreach($category as $item) :  ?>
-                                <option value="<?= $item['id']; ?>"><?= $item['name']; ?></option>
-                              <?php endforeach; ?>
-                            </select>
-                        </div>
-                         <div class="form-group">
-                            <label for="price">Price</label>
-                            <input type="number" name="price" class="form-control" id="price">
-                        </div>
-                         <div class="form-group">
-                            <label for="qty">QTY</label>
-                            <input type="text" name="qty" class="form-control" id="qty">
-                        </div>
-                         <div class="form-group">
-                            <label for="restock">Point of Restock</label>
-                            <input type="text" name="restock" class="form-control" id="restock">
-                        </div>
-                        <div class="form-group">
-                           <label for="short_desc">Short Description</label>
-                           <input type="text" name="short_desc" class="form-control" id="short_desc">
-                       </div>
-                        <div class="form-group">
-                          <label for="image">Image</label>
-                          <input type="file" name="image"  id="image">
-                        </div>
-                        <div class="form-group">
-                          <label for="image">Is Active</label>
-                          <input type="checkbox" name="is_active" value="is_active">
-                        </div>
-                        
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                    <button type="submit" name="btn-submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
+              <!-- form start -->
+              <form action="" method="POST" enctype="multipart/form-data">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Enter name">
+                  </div>
+                  <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control" name="category_id">
+                      <?php foreach($categories as $item): ?>
+                      <option value="<?php echo $item['id']; ?>"> <?php echo $item['name']; ?> </option>
+                      <?php endforeach; ?>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Brand</label>
+                    <select class="form-control" name="brand_id">
+                      <?php foreach($brands as $item): ?>
+                      <option value="<?php echo $item['id']; ?>"> <?php echo $item['name']; ?> </option>
+                      <?php endforeach; ?>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Short Description</label>
+                    <input type="text" class="form-control" name="desc">
+                  </div>                
+                  <div class="form-group">
+                    <label>Price</label>
+                    <input type="number" class="form-control" name="price">
+                  </div>                
+                  <div class="form-group">
+                    <label>QTY</label>
+                    <input type="number" class="form-control" name="qty">
+                  </div>                
+                  <div class="form-group">
+                    <label>Point of Restock</label>
+                    <input type="number" class="form-control" name="restock" value="0">
+                  </div>                
+                  <div class="form-group">
+                    <label>Image</label>
+                    <input type="file" name="image">
+                  </div>                
+                  <div class="form-group">
+                    <input type="checkbox" name="active" value="1">
+                    <label>Is Active</label>
+                  </div>                
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" name="btn_submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
             </div>
-
-          </div> 
+            <!-- /.card -->
+          </div>
         </div>
-        <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
-
-

@@ -1,10 +1,4 @@
 
-        <!-- Start Main Content Area -->
-        <div class="container-fluid">
-            <div class="main-content d-flex flex-column">
-                <!-- Start Header Area -->
-                <?php include_once 'views/layouts/header.php'?>
-                <!-- End Header Area -->
 
                 <div class="main-content-container overflow-hidden">
                     <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
@@ -779,11 +773,5 @@
 
                 <div class="flex-grow-1"></div>
 
-                <!-- Start Footer Area -->
-                    <?php include_once 'views/layouts/footer.php'?>
-                <!-- End Footer Area -->
-            </div>
-        </div>
-        <!-- Start Main Content Area -->
 
   
