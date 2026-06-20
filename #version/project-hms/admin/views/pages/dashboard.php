@@ -1,8 +1,4 @@
-    <div class="container-fluid">
-                <div class="main-content d-flex flex-column">
-                    <!-- Start Header Area -->
-                        <?php include_once 'views/layouts/header.php'; ?>
-                    <!-- End Header Area -->
+
 
                     <div class="main-content-container overflow-hidden">
                         <div class="row">
@@ -421,8 +417,4 @@
 
                     <div class="flex-grow-1"></div>
 
-                    <!-- Start Footer Area -->
-                        <?php include_once 'views/layouts/footer.php'; ?>
-                    <!-- End Footer Area -->
-                </div>
-            </div>
+                   

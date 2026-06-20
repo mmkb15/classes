@@ -1,24 +1,62 @@
         <?php
-        include_once 'config/base.php';
+include_once 'config/base.php';
+require_once 'config/db.php';
+
+// =============================================
+// CHECK IF PRINT PAGE
+// =============================================
+$is_print_page = false;
+if(isset($_GET['page']) && $_GET['page'] == 'prescriptions/print'){
+    $is_print_page = true;
+}
+?>
+
+<?php if(!$is_print_page): ?>
+    <!-- Start Header Area -->
+    <?php include_once 'views/layouts/header.php'; ?>
+    <!-- End Header Area -->
+
+    <!-- Start Sidebar Area -->
+    <?php include_once 'views/layouts/sidebar.php'; ?>
+    <!-- End Sidebar Area -->
+<?php endif; ?>
+
+<!-- Start Main Content Area -->
+<?php include_once 'route.php'; ?>
+<!-- End Main Content Area -->
+
+<?php if(!$is_print_page): ?>
+    <!-- Start Footer Area -->
+    <?php include_once 'views/layouts/footer.php'; ?>
+    <!-- End Footer Area -->
+<?php endif; ?>
+        
+        
+        
+        
+        
+        
+        
+        
+        <?php
+            // include_once 'config/base.php';
+            // require_once 'config/db.php';
         ?>
 
-        <!-- Start Head Area -->
-            <?php include_once 'views/layouts/head.php'; ?>
-        <!-- End Head Area -->
-
-        <!-- Start Preloader Area -->
-            <?php include_once 'views/layouts/preloader.php'; ?>
-        <!-- End Preloader Area -->
+        <!-- Start Header Area -->
+            <?php //include_once 'views/layouts/header.php'; ?>
+        <!-- End Header Area -->
 
         <!-- Start Sidebar Area -->
-            <?php include_once 'views/layouts/sidebar.php'; ?>
+            <?php //include_once 'views/layouts/sidebar.php'; ?>
         <!-- End Sidebar Area -->
 
         <!-- Start Main Content Area -->
-            <?php include_once 'route.php'; ?>
+            <?php //include_once 'route.php'; ?>
         <!-- Start Main Content Area -->
+
+        <!-- Start Footer Area -->
+        <?php //include_once 'views/layouts/footer.php' ?>
+        <!-- End Footer Area -->
+
         
-        <!-- Start Foot Area-->
-            <?php include_once 'views/layouts/foot.php'; ?>
-        <!-- End Foot Area -->
-     

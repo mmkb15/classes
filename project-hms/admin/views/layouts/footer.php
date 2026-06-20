@@ -1,6 +1,9 @@
                     <!-- Start Footer Area -->
                         <footer class="footer-area bg-white text-center rounded-top-7">
-                            <p class="fs-14">© <span class="text-primary-div">Trezo</span> is Proudly Owned by <a href="https://envytheme.com/" target="_blank" class="text-decoration-none text-primary">EnvyTheme</a></p>
+                            <p class="fs-14">&copy; 2026 | All Rights Reserved. Developed by 
+        <strong class="text-primary">Mustafa Mursalin Khan (1295365)</strong> 
+        (WDPF Round-70) as an assignment of 
+        <strong>ISDB-BISEW IT Scholarship Programme</strong>.</p>
                         </footer>
                     <!-- End Footer Area -->
                 </div>

@@ -30,7 +30,7 @@
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" href="assets/images/favicon.png">
 		<!-- Title -->
-		<title>Hospital Management System</title>
+		<title>City Hospital</title>
     </head>
     <body class="boxed-size">
 		<!-- Start Main Content Area -->
@@ -306,7 +306,7 @@
 													<div class="d-flex align-items-center justify-content-between">
 														<div class="d-none d-xxl-block">
 															<div class="d-flex align-content-center">
-																<h3>Olivia</h3>
+																<h3>Mursalin</h3>
 															</div>
 														</div>
 													</div>
@@ -319,8 +319,8 @@
 														<img class="rounded-circle wh-30 administrator" src="assets/images/administrator.jpg" alt="admin">
 													</div>
 													<div class="flex-grow-1 ms-2">
-														<h3 class="fw-medium">Olivia John</h3>
-														<span class="fs-12">Marketing Manager</span>
+														<h3 class="fw-medium">Mustafa Mursalin Khan</h3>
+														<span class="fs-12">Web Developer</span>
 													</div>
 												</div>
 												<ul class="admin-link ps-0 mb-0 list-unstyled">
