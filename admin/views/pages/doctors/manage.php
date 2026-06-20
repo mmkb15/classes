@@ -36,7 +36,7 @@ $rows = doctor::readAll();
 <!-- Start Main Content Area -->
 <div class="main-content-container overflow-hidden">
 <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
-    <h3 class="mb-0">Add New Doctors</h3>
+    <h3 class="mb-0">Doctors List</h3>
 </div>
 
 <!-- Message -->
@@ -53,7 +53,7 @@ $rows = doctor::readAll();
             <a href="create-doctor" class="btn btn-outline-primary fs-14 fw-medium rounded-3 hover-bg" style="padding: 1.5px 13px;">
                 <span class="py-sm-1 d-block">
                     <i class="ri-add-line d-none d-sm-inline-block fs-18 position-relative top-1"></i>
-                    <span>Doctor List</span>
+                    <span>Add New Doctor</span>
                 </span>
             </a>
         </div> 

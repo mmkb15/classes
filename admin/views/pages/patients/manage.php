@@ -76,7 +76,7 @@ $rows = Patient::readAll();
             <a href="create-patient" class="btn btn-outline-primary fs-14 fw-medium rounded-3 hover-bg" style="padding: 1.5px 13px;">
                 <span class="py-sm-1 d-block">
                     <i class="ri-add-line d-none d-sm-inline-block fs-18 position-relative top-1"></i>
-                    <span>Patient List</span>
+                    <span>Add New Patient</span>
                 </span>
             </a>
         </div> 
