@@ -1,0 +1,142 @@
+erDiagram
+    %% ==============================
+    %% PARENT TABLES (Master Data)
+    %% ==============================
+    GENDERS {
+        int id PK
+        varchar name
+    }
+
+    DEPARTMENTS {
+        int id PK
+        varchar name
+        text description
+        timestamp created_at
+    }
+
+    PATIENTS {
+        int id PK
+        varchar name
+        int age
+        int gender_id FK
+        varchar phone
+        text address
+        timestamp created_at
+    }
+
+    DOCTORS {
+        int id PK
+        int dept_id FK
+        varchar name
+        varchar specialization
+        varchar phone
+        varchar email
+        timestamp created_at
+    }
+
+    ROOMS {
+        int id PK
+        varchar room_no
+        varchar room_type
+        varchar status
+    }
+
+    MEDICINES {
+        int id PK
+        varchar name
+        varchar strength
+        decimal price
+        timestamp created_at
+    }
+
+    TESTS {
+        int id PK
+        varchar name
+        text description
+        decimal price
+        timestamp created_at
+    }
+
+    %% ==============================
+    %% TRANSACTION TABLES (Child)
+    %% ==============================
+
+    ADMISSIONS {
+        int id PK
+        int patient_id FK
+        int room_id FK
+        date admit_date
+        date discharge_date
+        varchar status
+    }
+
+    APPOINTMENTS {
+        int id PK
+        int patient_id FK
+        int doctor_id FK
+        date appointment_date
+        varchar status
+        timestamp created_at
+    }
+
+    BILLINGS {
+        int id PK
+        int patient_id FK
+        int admission_id FK
+        decimal amount
+        date bill_date
+        text description
+    }
+
+    PRESCRIPTIONS {
+        int id PK
+        int appointment_id FK
+        int patient_id FK
+        int doctor_id FK
+        text diagnosis
+        date prescription_date
+        date follow_up_date
+        text notes
+        timestamp created_at
+    }
+
+    PRESCRIPTION_MEDICINES {
+        int id PK
+        int prescription_id FK
+        int medicine_id FK
+        varchar dosage
+        varchar duration
+        text instructions
+    }
+
+    PRESCRIPTION_TESTS {
+        int id PK
+        int prescription_id FK
+        int test_id FK
+        text instructions
+    }
+
+    %% ==============================
+    %% RELATIONSHIPS (Connections)
+    %% ==============================
+    GENDERS ||--o{ PATIENTS : "has"
+    DEPARTMENTS ||--o{ DOCTORS : "has"
+    
+    PATIENTS ||--o{ APPOINTMENTS : "books"
+    DOCTORS ||--o{ APPOINTMENTS : "attends"
+    
+    PATIENTS ||--o{ ADMISSIONS : "admits"
+    ROOMS ||--o{ ADMISSIONS : "allocates"
+    
+    PATIENTS ||--o{ BILLINGS : "receives"
+    ADMISSIONS ||--o{ BILLINGS : "generates"
+
+    PATIENTS ||--o{ PRESCRIPTIONS : "has"
+    DOCTORS ||--o{ PRESCRIPTIONS : "prescribes"
+    APPOINTMENTS ||--|| PRESCRIPTIONS : "generates"
+
+    PRESCRIPTIONS ||--o{ PRESCRIPTION_MEDICINES : "contains"
+    MEDICINES ||--o{ PRESCRIPTION_MEDICINES : "included_in"
+
+    PRESCRIPTIONS ||--o{ PRESCRIPTION_TESTS : "requires"
+    TESTS ||--o{ PRESCRIPTION_TESTS : "advised_in"

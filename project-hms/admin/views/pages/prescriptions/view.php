@@ -16,7 +16,7 @@ if(!$prescription) {
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
         <h3 class="mb-0">Prescription Details</h3>
         <div>
-            <a href="?page=prescriptions/print&id=<?= $id ?>" class="btn btn-success" target="_blank">Print</a>
+            <a href="?page=prescriptions/print&id=<?= $id ?>" class="btn btn-primary" target="_blank">Print</a>
             <a href="?page=prescriptions/manage" class="btn btn-secondary">Back</a>
         </div>
     </div>
@@ -43,10 +43,10 @@ if(!$prescription) {
             </div>
 
             <?php if(count($medicines) > 0): ?>
-            <div class="row mb-4">
-                <div class="col-12">
+            <div class="row mb-4 default-table-area all-products">
+                <div class="col-12 table-responsive">
                     <h5>Medicines</h5>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered align-middle">
                         <thead>
                             <tr>
                                 <th>Medicine</th>
@@ -71,10 +71,10 @@ if(!$prescription) {
             <?php endif; ?>
 
             <?php if(count($tests) > 0): ?>
-            <div class="row mb-4">
-                <div class="col-12">
+            <div class="row mb-4 default-table-area all-products">
+                <div class="col-12 table-responsive">
                     <h5>Tests</h5>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered align-middle">
                         <thead>
                             <tr>
                                 <th>Test</th>

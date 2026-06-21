@@ -223,16 +223,54 @@ CREATE TABLE prescription_tests (
 -- =============================================
 -- INSERT SOME SAMPLE DATA
 -- =============================================
+
+
+
+INSERT INTO departments (id, name, description) VALUES
+(4, 'Gastroenterology', 'Digestive system, liver, and stomach disorders'),
+(5, 'Urology', 'Urinary tract and male reproductive system'),
+(6, 'Dermatology', 'Skin, hair, and nail treatments'),
+(7, 'Pediatrics', 'Infant, child, and adolescent healthcare'),
+(8, 'Gynecology & Obstetrics', 'Women health, pregnancy, and childbirth'),
+(9, 'Nephrology', 'Kidney diseases and dialysis management'),
+(10, 'Ophthalmology', 'Eye care, vision testing, and surgeries');
+
+
+INSERT INTO doctors (dept_id, name, specialization, phone, email) VALUES
+(1, 'Prof. Dr. Shams Munwar', 'Interventional Cardiologist', '01711223344', 'shams.munwar@hms.com'),
+(2, 'Prof. Dr. Deen Mohammad', 'Neurologist & Stroke Specialist', '01811223344', 'deen.mohammad@hms.com'),
+(3, 'Dr. Lutful L. Chowdhury', 'Gastroenterologist & Hepatologist', '01911223344', 'lutful.chowdhury@hms.com'),
+(4, 'Prof. Dr. M. Amjad Hossain', 'Orthopedic & Arthroplasty Surgeon', '01511223344', 'amjad.hossain@hms.com'),
+(5, 'Prof. Dr. Mohammad Abdus Salam', 'Urologist & Kidney Transplant Specialist', '01611223344', 'abdus.salam@hms.com'),
+(6, 'Dr. Jasmine Manzoor', 'Clinical & Aesthetic Dermatologist', '01722334455', 'jasmine.manzoor@hms.com'),
+(7, 'Prof. Dr. Abid Hossain Mollah', 'Pediatrician & Child Specialist', '01822334455', 'abid.mollah@hms.com'),
+(8, 'Prof. Dr. T. A. Chowdhury', 'Gynecologist & Infertility Specialist', '01922334455', 'ta.chowdhury@hms.com'),
+(9, 'Prof. Dr. Muhibur Rahman', 'Nephrologist & Kidney Specialist', '01522334455', 'muhibur.rahman@hms.com'),
+(10, 'Prof. Dr. Ava Hossain', 'Ophthalmologist & Phaco Surgeon', '01622334455', 'ava.hossain@hms.com');
+
+
 INSERT INTO medicines (name, strength, price) VALUES
-('Paracetamol', '500mg', 50.00),
-('Amoxicillin', '250mg', 120.00),
-('Omeprazole', '20mg', 80.00),
-('Cetirizine', '10mg', 30.00),
-('Metformin', '500mg', 90.00);
+('Napa Extend', '665 mg', 2.50),
+('Seclo', '20 mg', 7.00),
+('Sergel', '20 mg', 8.00),
+('Alatrol', '10 mg', 4.00),
+('Zimax', '500 mg', 45.00),
+('Ace', '500 mg', 1.50),
+('Fenadin', '120 mg', 9.00),
+('Monas', '10 mg', 17.50),
+('Bizoran', '5/20 mg', 12.00),
+('Xarelto', '10 mg', 75.00);
+
+
 
 INSERT INTO tests (name, description, price) VALUES
-('CBC', 'Complete Blood Count', 500.00),
-('Blood Sugar', 'Fasting Blood Sugar Test', 300.00),
-('X-Ray', 'Chest X-Ray', 800.00),
-('ECG', 'Electrocardiogram', 1000.00),
-('MRI', 'Magnetic Resonance Imaging', 5000.00);
+('CBC (Complete Blood Count)', 'Routine blood test to evaluate overall health and detect disorders like anemia.', 450.00),
+('Lipid Profile', 'A panel of blood tests used to find risks of cardiovascular diseases.', 1200.00),
+('Serum Creatinine', 'Kidney function test to measure the level of creatinine in the blood.', 400.00),
+('Ultrasonography (USG) of Whole Abdomen', 'Imaging test to examine organs in the abdomen like liver, kidneys, and gallbladder.', 1800.00),
+('X-Ray Chest P/A View', 'Standard chest X-ray to diagnose lung diseases or heart structures.', 500.00),
+('ECG (Electrocardiogram)', 'Test to record the electrical activity of the heart over a period of time.', 400.00),
+('Echocardiogram', 'Ultrasound of the heart to see real-time motion and valve functions.', 2500.00),
+('Fasting Blood Sugar (FBS)', 'Blood test to measure glucose levels after fasting, used to detect diabetes.', 150.00),
+('HBA1c', 'Test that shows the average level of blood sugar over the past 2 to 3 months.', 800.00),
+('MRI of Brain', 'Advanced imaging to detect tumors, strokes, or neurological issues in brain.', 6000.00);
