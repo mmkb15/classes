@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start jQuery</title>
+</head>
+<body>
+    <p class="p-1">Para 1</p>
+    <p id="p2">Para 2</p>
+    <p class="p-3">Para 3</p>
+    <div></div>
+
+    <script src="js/jquery-4.0.0.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <script>
+        // document.querySelector('p').style.color = 'red';
+        // document.querySelectorAll('p').forEach(p => {
+        //     p.style.color = 'red';
+        // });
+        $('p').css('color','red');
+
+        // document.querySelector('div').innerText = 'Hello World';
+        // $('div').text('Hello World');
+        $('div').html('Hello <b>World</b>');
+
+        $(".p-1").css({
+            "color"             :  "red",
+            "font-weight"       : "bold",
+            "font-size"         : "20px",
+            "backgorund-color"  :  "yellow"
+        });
+
+
+        $("div").append("<p>Para 4</p>");
+        $("div").append("<p>Para 5</p>");
+        $("div").append("<p>Para 6</p>");
+        $("div").prepend("<p>Para </p>");
+        $(".p-3, #p2").hide();
+        $(".p-3, #p2").show(2000);
+
+
+        // document.querySelector(".p-3").addEventListener("click", function(){
+        //     alert("😘💕");
+        // });
+
+        $(".p-3").click(function(){
+            alert("👌")
+        });
+
+        $(".p-1").mouseover(function(){
+            alert("🍗");
+        })
+        $("[id='p2']").dblclick(function(){
+            alert("😒");
+        })
+
+    </script>
+    
+</body>
+</html>

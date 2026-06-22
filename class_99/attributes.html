@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attributes</title>
+</head>
+<body>
+    
+    <!-- <input type="text" name="input" value="somthing" id="" data-price="1000"> -->
+    <input type="password" name="input" value="somthing" id="" data-price="1000">
+    <button>Show/Hide</button>
+
+
+    <script src="js/jquery-4.0.0.min.js"></script>
+    <script>
+        // $("input").attr("name", "username"); // 2 perameter assign value
+        // let inputAttr = $("input").attr("name");  // 1 perameter return value
+        
+        // console.log(inputAttr);
+
+        // $('input').attr({
+        //     "name"        : "username",
+        //     "title"       : "Enter Your Name",
+        //     "style"       : "color: red; font-size: 29px; padding:10px 20px; border:5px solid green",
+        //     "value"       : "TCLK",
+        //     "data-price"  : "2000",
+        // });
+
+        // $("input").data("price", "2000");
+        // console.log = $
+
+        $("button").click(function(){
+            let type = $("input").attr("type");
+            // console.log(type);
+            
+            // if(type == "password"){
+            //     $("input").attr("type","text");
+            // }else if(type == "text"){
+            //     $("input").attr("type","password");
+            // }
+            
+            // Short Version
+            if(type == "password"){
+                $("input").attr("type","text");
+            }else {
+                $("input").attr("type","password");
+            }
+        });
+
+
+    </script>
+</body>
+</html>
