@@ -66,6 +66,75 @@ if(isset($_GET['page'])){
     }
     
     // =============================================
+    // Admissions MODULE
+    // =============================================
+    elseif($page == 'admissions/manage' || $page == 'admissions'){
+        include_once 'views/pages/admissions/manage.php';
+    }
+    elseif($page == 'admissions/create'){
+        include_once 'views/pages/admissions/create.php';
+    }
+    elseif($page == 'admissions/discharge'){
+        include_once 'views/pages/admissions/discharge.php';
+    }
+
+    // =============================================
+    // MEDICINES MODULE
+    // =============================================
+    elseif($page == 'medicines/manage' || $page == 'medicines'){
+        include_once 'views/pages/medicines/manage.php';
+    }
+    elseif($page == 'medicines/create'){
+        include_once 'views/pages/medicines/create.php';
+    }
+    elseif($page == 'medicines/edit'){
+        include_once 'views/pages/medicines/edit.php';
+    }
+
+
+    // =============================================
+    // TESTS MODULE
+    // =============================================
+    elseif($page == 'tests/manage' || $page == 'tests'){
+        include_once 'views/pages/tests/manage.php';
+    }
+    elseif($page == 'tests/create'){
+        include_once 'views/pages/tests/create.php';
+    }
+    elseif($page == 'tests/edit'){
+        include_once 'views/pages/tests/edit.php';
+    }
+
+    // =============================================
+    // BILLING MODULE
+    // =============================================
+    elseif($page == 'billings/manage' || $page == 'billings'){
+        include_once 'views/pages/billings/manage.php';
+    }
+    elseif($page == 'billings/create'){
+        include_once 'views/pages/billings/create.php';
+    }
+    elseif($page == 'billings/edit'){
+        include_once 'views/pages/billings/edit.php';
+    }    
+
+        // =============================================
+        // PATIENT HISTORY
+        // =============================================
+        // elseif($page == 'patients/history' || $page == 'history-patient'){
+        //     include_once 'views/pages/patients/history.php';
+        // }
+
+        elseif($page == 'patients/history' || $page == 'patient-history'){
+            include_once 'views/pages/patients/history.php';
+        }
+        
+        elseif($page == 'patients/history-search' || $page == 'history-search'){
+            include_once 'views/pages/patients/history-search.php';
+        }
+
+
+    // =============================================
     // 404 - PAGE NOT FOUND
     // =============================================
     else{

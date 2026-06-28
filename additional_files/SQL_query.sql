@@ -274,3 +274,16 @@ INSERT INTO tests (name, description, price) VALUES
 ('Fasting Blood Sugar (FBS)', 'Blood test to measure glucose levels after fasting, used to detect diabetes.', 150.00),
 ('HBA1c', 'Test that shows the average level of blood sugar over the past 2 to 3 months.', 800.00),
 ('MRI of Brain', 'Advanced imaging to detect tumors, strokes, or neurological issues in brain.', 6000.00);
+
+
+
+
+INSERT INTO rooms (room_no, room_type, status) VALUES 
+('101', 'General', 'Available'),
+('102', 'General', 'Available'),
+('201', 'Cabin', 'Available'),
+('202', 'ICU', 'Available');
+
+UPDATE rooms SET rate_per_day = 500.00 WHERE room_type = 'General';
+UPDATE rooms SET rate_per_day = 1000.00 WHERE room_type = 'Cabin';
+UPDATE rooms SET rate_per_day = 2000.00 WHERE room_type = 'ICU';

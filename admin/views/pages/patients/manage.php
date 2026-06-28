@@ -128,7 +128,7 @@ $rows = Patient::readAll();
                                 </div>
                             </td>
                             <td style="padding-top: 17px; padding-bottom: 17px;">
-                                <a href="product-details.html" class="d-flex align-items-center">
+                                <a href="index.php?page=patients/history&id=<?= $row['id'] ?>" class="d-flex align-items-center">
                                     <!-- <img src="assets/images/user-134.png" class="wh-30 rounded-3" alt="user"> -->
                                     <div class="ms-2 ps-1">
                                         <h6 class="fw-semibold fs-14 mb-0 text-secondary"><?= $item['name'] ?></h6>
@@ -158,6 +158,14 @@ $rows = Patient::readAll();
                                         <i class="material-symbols-outlined fs-18 text-danger">delete</i>
                                     </button>
                                     </form>
+                                    
+                                    <!-- History Button  -->       
+                                    <a href="history-search?id=<?= $item['id'] ?>">
+                                        <button class="ps-0 border-0 bg-transparent lh-1 position-relative top-2" title="View History">
+                                            <i class="material-symbols-outlined fs-18 text-info">history</i>
+                                        </button>
+                                    </a>
+                                    
                                 </div>
                             </td> 
                         </tr>
