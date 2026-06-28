@@ -1,4 +1,4 @@
-        <?php
+<?php
 include_once 'config/base.php';
 require_once 'config/db.php';
 
@@ -6,8 +6,11 @@ require_once 'config/db.php';
 // CHECK IF PRINT PAGE
 // =============================================
 $is_print_page = false;
-if(isset($_GET['page']) && $_GET['page'] == 'prescriptions/print'){
-    $is_print_page = true;
+if(isset($_GET['page'])){
+    $page = $_GET['page'];
+    if($page == 'prescriptions/print' || $page == 'billings/print'){
+        $is_print_page = true;
+    }
 }
 ?>
 
@@ -30,7 +33,6 @@ if(isset($_GET['page']) && $_GET['page'] == 'prescriptions/print'){
     <?php include_once 'views/layouts/footer.php'; ?>
     <!-- End Footer Area -->
 <?php endif; ?>
-        
         
         
         

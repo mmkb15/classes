@@ -93,7 +93,7 @@ $appointments = Appointment::readAll();
                                     </div>
                                 </td>
                                 <td style="padding-top: 17px; padding-bottom: 17px;">
-                                    <a href="javascript:void(0);" class="d-flex align-items-center">
+                                    <a href="patient-history?id=<?= $item['id'] ?>" class="d-flex align-items-center">
                                         <div class="ms-2 ps-1">
                                             <h6 class="fw-semibold fs-14 mb-0 text-secondary"><?= htmlspecialchars($row['patient_name']) ?></h6>
                                         </div>

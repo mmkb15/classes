@@ -24,7 +24,6 @@ $medicines = Medicine::readAll();
 <div class="main-content-container overflow-hidden">
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
         <h3 class="mb-0">Medicine List</h3>
-        <a href="?page=medicines/create" class="btn btn-primary py-2 px-4 fw-medium fs-16">+ Add New Medicine</a>
     </div>
 
     <!-- Display Success/Error Message -->
@@ -37,6 +36,17 @@ $medicines = Medicine::readAll();
 
     <div class="card bg-white border-0 rounded-3 mb-4">
         <div class="card-body p-20">
+            
+            <!-- Add Button -->
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-20">
+                <a href="create-medicine" class="btn btn-outline-primary fs-14 fw-medium rounded-3 hover-bg" mb-4 style="padding: 1.5px 13px;">
+                    <span class="py-sm-1 d-block">
+                        <i class="ri-add-line d-none d-sm-inline-block fs-18 position-relative top-1"></i>
+                        <span>Add New Medicine</span>
+                    </span>
+                </a>
+            </div>
+
             <div class="default-table-area all-products">
                 <div class="table-responsive">
                     <table class="table align-middle">

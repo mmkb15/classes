@@ -103,7 +103,7 @@ $rows = doctor::readAll();
                                 </div>
                             </td>
                             <td style="padding-top: 17px; padding-bottom: 17px;">
-                                <a href="product-details.html" class="d-flex align-items-center">
+                                <a href="#" class="d-flex align-items-center">
                                     <!-- <img src="assets/images/user-134.png" class="wh-30 rounded-3" alt="user"> -->
                                     <div class="ms-2 ps-1">
                                         <h6 class="fw-semibold fs-14 mb-0 text-secondary"><?= $item['name'] ?></h6>
@@ -117,9 +117,12 @@ $rows = doctor::readAll();
                             <td class="text-body-color-50 fs-12 fw-semibold" style="padding-top: 17px; padding-bottom: 17px;"><?= $item['created_at'] ?></td>
                             <td style="padding-top: 17px; padding-bottom: 17px;">
                                 <div class="d-flex align-items-center gap-1">
-                                    <button class="ps-0 border-0 bg-transparent lh-1 position-relative top-2">
-                                        <i class="material-symbols-outlined fs-18 text-primary">visibility</i>
-                                    </button>
+                                     <!-- View Button -->
+                                        <a href="?page=doctors/view&id=<?= $item['id'] ?>" 
+                                           class="ps-0 border-0 bg-transparent lh-1 position-relative top-2" 
+                                           title="View Doctor">
+                                            <i class="material-symbols-outlined fs-18 text-primary">visibility</i>
+                                        </a>
 
                                     <!-- doctor Edit Button -->
                                     <a href="edit-doctor?id=<?= $item['id'] ?>"><button class="ps-0 border-0 bg-transparent lh-1 position-relative top-2">

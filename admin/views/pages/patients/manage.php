@@ -38,22 +38,6 @@ $rows = Patient::readAll();
 <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
     <h3 class="mb-0">Patients List</h3>
 
-    <!-- <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-        <ol class="breadcrumb align-items-center mb-0 lh-1">
-            <li class="breadcrumb-item">
-                <a href="#" class="d-flex align-items-center text-decoration-none">
-                    <i class="ri-home-4-line fs-18 text-primary me-1"></i>
-                    <span class="text-secondary fw-medium hover">Dashboard</span>
-                </a>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">
-                <span class="fw-medium">Doctors</span>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">
-                <span class="fw-medium">Patients List</span>
-            </li>
-        </ol>
-    </nav> -->
 </div>
 
 <!-- Message -->
@@ -67,12 +51,6 @@ $rows = Patient::readAll();
 <div class="card bg-white border-0 rounded-3 mb-4">
     <div class="card-body p-20">
         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-20">
-            <!-- <form class="position-relative table-src-form me-0">
-                <input type="text" class="form-control bg-body-bg border-body-bg ps-3" style="width: 260px; height: 40px;" placeholder="Search here.....">
-                <button class="bg-transparent p-0 pe-3 lh-1 border-0 position-absolute top-50 end-0 translate-middle-y text-primary" type="button">
-                    <i class="material-symbols-outlined position-relative top-2 pe-3">search</i>
-                </button>
-            </form> -->
             <a href="create-patient" class="btn btn-outline-primary fs-14 fw-medium rounded-3 hover-bg" style="padding: 1.5px 13px;">
                 <span class="py-sm-1 d-block">
                     <i class="ri-add-line d-none d-sm-inline-block fs-18 position-relative top-1"></i>
@@ -128,7 +106,7 @@ $rows = Patient::readAll();
                                 </div>
                             </td>
                             <td style="padding-top: 17px; padding-bottom: 17px;">
-                                <a href="index.php?page=patients/history&id=<?= $row['id'] ?>" class="d-flex align-items-center">
+                                <a href="patient-history?id=<?= $item['id'] ?>" class="d-flex align-items-center">
                                     <!-- <img src="assets/images/user-134.png" class="wh-30 rounded-3" alt="user"> -->
                                     <div class="ms-2 ps-1">
                                         <h6 class="fw-semibold fs-14 mb-0 text-secondary"><?= $item['name'] ?></h6>
@@ -142,9 +120,6 @@ $rows = Patient::readAll();
                             <td class="text-body-color-50 fs-12 fw-semibold" style="padding-top: 17px; padding-bottom: 17px;"><?= $item['created_at'] ?></td>
                             <td style="padding-top: 17px; padding-bottom: 17px;">
                                 <div class="d-flex align-items-center gap-1">
-                                    <button class="ps-0 border-0 bg-transparent lh-1 position-relative top-2">
-                                        <i class="material-symbols-outlined fs-18 text-primary">visibility</i>
-                                    </button>
 
                                     <!-- Patient Edit Button -->
                                     <a href="edit-patient?id=<?= $item['id'] ?>"><button class="ps-0 border-0 bg-transparent lh-1 position-relative top-2">
@@ -160,7 +135,7 @@ $rows = Patient::readAll();
                                     </form>
                                     
                                     <!-- History Button  -->       
-                                    <a href="history-search?id=<?= $item['id'] ?>">
+                                    <a href="patient-history?id=<?= $item['id'] ?>">
                                         <button class="ps-0 border-0 bg-transparent lh-1 position-relative top-2" title="View History">
                                             <i class="material-symbols-outlined fs-18 text-info">history</i>
                                         </button>

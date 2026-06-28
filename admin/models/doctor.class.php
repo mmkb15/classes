@@ -96,18 +96,18 @@ class Doctor
     }
 
     // =============================================
-    // READ BY ID - spesafic doctor  data 
+    // READ BY ID - specific doctor data with department name
     // =============================================
     static public function readByID($_id) {
         global $db;
 
-        $sql    = "SELECT id, dept_id, name, specialization, phone, email, created_at 
-                   FROM doctors 
-                   WHERE id = $_id";
-                   
-        $result = $db->query($sql);
+        $sql = "SELECT doc.*, dept.name AS department 
+                FROM doctors AS doc
+                LEFT JOIN departments AS dept ON doc.dept_id = dept.id
+                WHERE doc.id = $_id";
 
-        return $result->fetch_assoc(); 
+        $result = $db->query($sql);
+        return $result->fetch_assoc();
     }
 
     // =============================================

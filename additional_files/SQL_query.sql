@@ -287,3 +287,14 @@ INSERT INTO rooms (room_no, room_type, status) VALUES
 UPDATE rooms SET rate_per_day = 500.00 WHERE room_type = 'General';
 UPDATE rooms SET rate_per_day = 1000.00 WHERE room_type = 'Cabin';
 UPDATE rooms SET rate_per_day = 2000.00 WHERE room_type = 'ICU';
+
+INSERT INTO rooms (room_no, room_type, status, rate_per_day) VALUES
+('103', 'General', 'Available', 500.00),
+('104', 'General', 'Occupied', 500.00),
+('105', 'General', 'Available', 500.00),
+('203', 'Cabin', 'Available', 1000.00),
+('204', 'Cabin', 'Occupied', 1000.00),
+('205', 'Cabin', 'Maintenance', 1000.00),
+('301', 'ICU', 'Occupied', 2000.00),
+('302', 'ICU', 'Available', 2000.00),
+('303', 'ICU', 'Available', 2000.00);

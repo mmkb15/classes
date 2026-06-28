@@ -35,6 +35,9 @@ if(isset($_GET['page'])){
     elseif($page == 'doctors/edit' || $page == 'edit-doctor'){
         include_once 'views/pages/doctors/edit.php';
     }
+    elseif($page == 'doctors/view'){
+        include_once 'views/pages/doctors/view.php';
+    }
     
     // =============================================
     // APPOINTMENTS MODULE
@@ -71,10 +74,10 @@ if(isset($_GET['page'])){
     elseif($page == 'admissions/manage' || $page == 'admissions'){
         include_once 'views/pages/admissions/manage.php';
     }
-    elseif($page == 'admissions/create'){
+    elseif($page == 'admissions/create' || $page == 'create-admission'){
         include_once 'views/pages/admissions/create.php';
     }
-    elseif($page == 'admissions/discharge'){
+    elseif($page == 'admissions/discharge' || $page == 'discharge-admission'){
         include_once 'views/pages/admissions/discharge.php';
     }
 
@@ -84,10 +87,10 @@ if(isset($_GET['page'])){
     elseif($page == 'medicines/manage' || $page == 'medicines'){
         include_once 'views/pages/medicines/manage.php';
     }
-    elseif($page == 'medicines/create'){
+    elseif($page == 'medicines/create' || $page == 'create-medicine'){
         include_once 'views/pages/medicines/create.php';
     }
-    elseif($page == 'medicines/edit'){
+    elseif($page == 'medicines/edit' || $page == 'edit-medicine'){
         include_once 'views/pages/medicines/edit.php';
     }
 
@@ -98,10 +101,10 @@ if(isset($_GET['page'])){
     elseif($page == 'tests/manage' || $page == 'tests'){
         include_once 'views/pages/tests/manage.php';
     }
-    elseif($page == 'tests/create'){
+    elseif($page == 'tests/create' || $page == 'create-test'){
         include_once 'views/pages/tests/create.php';
     }
-    elseif($page == 'tests/edit'){
+    elseif($page == 'tests/edit' || $page == 'edit-test'){
         include_once 'views/pages/tests/edit.php';
     }
 
@@ -111,20 +114,25 @@ if(isset($_GET['page'])){
     elseif($page == 'billings/manage' || $page == 'billings'){
         include_once 'views/pages/billings/manage.php';
     }
-    elseif($page == 'billings/create'){
+    elseif($page == 'billings/create' || $page == 'create-billing'){
         include_once 'views/pages/billings/create.php';
     }
-    elseif($page == 'billings/edit'){
+    elseif($page == 'billings/edit' || $page == 'edit-billing'){
         include_once 'views/pages/billings/edit.php';
     }    
+        // =============================================
+        // BILLING - VIEW & PRINT
+        // =============================================
+        elseif($page == 'billings/view' || $page == 'view-billings'){
+            include_once 'views/pages/billings/view.php';
+        }
+        elseif($page == 'billings/print' || $page == 'print-billings'){
+            include_once 'views/pages/billings/print.php';
+        }
 
         // =============================================
         // PATIENT HISTORY
         // =============================================
-        // elseif($page == 'patients/history' || $page == 'history-patient'){
-        //     include_once 'views/pages/patients/history.php';
-        // }
-
         elseif($page == 'patients/history' || $page == 'patient-history'){
             include_once 'views/pages/patients/history.php';
         }
@@ -132,6 +140,7 @@ if(isset($_GET['page'])){
         elseif($page == 'patients/history-search' || $page == 'history-search'){
             include_once 'views/pages/patients/history-search.php';
         }
+
 
 
     // =============================================

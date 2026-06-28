@@ -22,16 +22,22 @@ $appointment = Appointment::readByID($prescription['appointment_id']);
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prescription #<?= $id ?></title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
         /* ============================================
            PRESCRIPTION PRINT STYLES
            ============================================ */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #f0f2f5;
             padding: 30px;
             margin: 0;
+            color: #2c3e50;
         }
         .print-container {
             max-width: 900px;
@@ -90,7 +96,7 @@ $appointment = Appointment::readByID($prescription['appointment_id']);
             cursor: pointer;
             text-decoration: none;
         }
-        .btn-primary { background: #1a5276; color: #fff; }
+        .btn-primary { background: #605DFF; color: #fff; }
         .btn-primary:hover { background: #0e3b54; }
         .custom-padding-30 { padding: 30px; }
         .doctor-filter-img { max-width: 100%; height: auto; }
@@ -116,7 +122,7 @@ $appointment = Appointment::readByID($prescription['appointment_id']);
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            background: #1a5276;
+            background: #605DFF;
             color: #fff;
             border: none;
             border-radius: 6px;

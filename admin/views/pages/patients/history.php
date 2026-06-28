@@ -46,34 +46,38 @@ $patient = $history['patient'];
         <div class="card-body p-20">
             <h4>Admissions (<?= count($history['admissions']) ?>)</h4>
             <?php if(count($history['admissions']) > 0): ?>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Room</th>
-                            <th>Admit Date</th>
-                            <th>Discharge Date</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach($history['admissions'] as $adm): ?>
-                        <tr>
-                            <td><?= $adm['id'] ?></td>
-                            <td><?= $adm['room_no'] ?? 'N/A' ?> (<?= $adm['room_type'] ?? 'N/A' ?>)</td>
-                            <td><?= date('d M, Y', strtotime($adm['admit_date'])) ?></td>
-                            <td><?= $adm['discharge_date'] ? date('d M, Y', strtotime($adm['discharge_date'])) : 'N/A' ?></td>
-                            <td>
-                                <span class="badge <?= ($adm['status'] == 'Admitted') ? 'bg-success' : 'bg-secondary' ?>">
-                                    <?= $adm['status'] ?>
-                                </span>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
+
+            <div class="default-table-area">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Room</th>
+                                <th>Admit Date</th>
+                                <th>Discharge Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($history['admissions'] as $adm): ?>
+                            <tr>
+                                <td><?= $adm['id'] ?></td>
+                                <td><?= $adm['room_no'] ?? 'N/A' ?> (<?= $adm['room_type'] ?? 'N/A' ?>)</td>
+                                <td><?= date('d M, Y', strtotime($adm['admit_date'])) ?></td>
+                                <td><?= $adm['discharge_date'] ? date('d M, Y', strtotime($adm['discharge_date'])) : 'N/A' ?></td>
+                                <td>
+                                    <span class="badge <?= ($adm['status'] == 'Admitted') ? 'bg-success' : 'bg-secondary' ?>">
+                                        <?= $adm['status'] ?>
+                                    </span>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
+            
             <?php else: ?>
             <p class="text-muted">No admissions found.</p>
             <?php endif; ?>
@@ -150,27 +154,48 @@ $patient = $history['patient'];
         <div class="card-body p-20">
             <h4>Bills (<?= count($history['bills']) ?>)</h4>
             <?php if(count($history['bills']) > 0): ?>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Bill ID</th>
-                            <th>Amount</th>
-                            <th>Date</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach($history['bills'] as $bill): ?>
-                        <tr>
-                            <td><?= $bill['id'] ?></td>
-                            <td><?= $bill['amount'] ?></td>
-                            <td><?= date('d M, Y', strtotime($bill['bill_date'])) ?></td>
-                            <td><?= htmlspecialchars($bill['description'] ?? '') ?></td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+
+            <div class="default-table-area">
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th>Bill ID</th>
+                                <th>Amount (BDT)</th>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($history['bills'] as $bill): ?>
+                            <tr>
+                                <td><?= $bill['id'] ?></td>
+                                <td><?= number_format($bill['amount'], 2) ?></td>
+                                <td><?= date('d M, Y', strtotime($bill['bill_date'])) ?></td>
+                                <td><?= htmlspecialchars($bill['description'] ?? '') ?></td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <!-- View Button (Icon only) -->
+                                        <a href="?page=billings/view&id=<?= $bill['id'] ?>" 
+                                        class="ps-0 border-0 bg-transparent lh-1 position-relative top-2" 
+                                        title="View Bill">
+                                            <i class="material-symbols-outlined fs-18 text-primary">visibility</i>
+                                        </a>
+                                        <!-- Print Button (Icon only) -->
+                                        <a href="?page=billings/print&id=<?= $bill['id'] ?>" 
+                                        target="_blank" 
+                                        class="ps-0 border-0 bg-transparent lh-1 position-relative top-2" 
+                                        title="Print Bill">
+                                            <i class="material-symbols-outlined fs-18 text-success">print</i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <?php else: ?>
             <p class="text-muted">No bills found.</p>
