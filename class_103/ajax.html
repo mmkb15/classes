@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+</head>
+<body>
+    
+
+    <script src="js/jquery-4.0.0.min.js" ></script>
+    <script>
+        // $.get();
+        // $.post();
+
+        $.ajax({
+            // url         : "js/data.json",
+            url         : "https://jsonplaceholder.typicode.com/albums",
+            // type        : "POST",//optional ..default "GET" method
+            // data        : "{'name': 'John', 'age': 30}",
+            // dataType    : "json",    //optional
+            success     : function(res) {
+                console.log(res);
+            },
+            error       : function(err) {
+                console.log(err);
+            }
+        });
+
+    </script>
+</body>
+</html>

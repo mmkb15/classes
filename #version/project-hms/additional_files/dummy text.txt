@@ -1,0 +1,19 @@
+| Medicine          | Dosage | Duration | Instructions     |
+| ----------------- | ------ | -------- | ---------------- |
+| Paracetamol 500mg | 1+1+1  | 5 Days   | After Meal       |
+| Amoxicillin 500mg | 1+0+1  | 7 Days   | After Meal       |
+| Omeprazole 20mg   | 1+0+0  | 14 Days  | Before Breakfast |
+
+
+| Test        | Instructions         |
+| ----------- | -------------------- |
+| CBC         | Complete Blood Count |
+| Urine R/E   | Routine Examination  |
+| Blood Sugar | Fasting Blood Sugar  |
+| X-Ray Chest | PA View              |
+
+
+Patient presents with fever, headache, and body ache for the last 3 days. Clinical findings suggest Acute Viral Fever. CBC test advised for further evaluation.
+
+Notes :
+Take adequate rest and drink plenty of fluids. Complete the prescribed medication course. Return immediately if fever persists for more than 5 days or symptoms worsen.

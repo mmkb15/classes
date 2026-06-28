@@ -60,6 +60,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="blog" class="nav-link">
+              <i class="nav-icon fa-solid fa-receipt"></i>
+              <p>
+                Blog Post
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="form" class="nav-link">
               <i class="nav-icon fa-solid fa-receipt"></i>
               <p>

@@ -12,10 +12,23 @@ if(isset($_POST['delete_id'])){
   }
 }
 
-$rows = User::readAll();
+$limit = 3;
+
+$pages = User::getPageNo($limit);
+// echo '<pre>';
+// print_r($pages);
+// echo '</pre>';
+$rows = User::readAll(1, $limit);
 // echo '<pre>';
 // print_r($rows);
 // echo '</pre>';
+
+
+if(isset($_GET['pg'])) {
+  $pg = $_GET['pg'];
+  // echo "<h1>Page Number : $pg</h1>";
+  $rows = User::readAll($pg, $limit);
+}
 ?>
 
 <div class="content-wrapper">
@@ -87,6 +100,17 @@ $rows = User::readAll();
             </div>
             <!-- /.card-body -->
           </div>
+          <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                  <li class="page-item"><a class="page-link" href="users?pg=1">«</a></li>
+
+                  <?php for($i = 1; $i <= $pages; $i++): ?>
+                  <li class="page-item"><a class="page-link" href="users?pg=<?= $i; ?>"><?= $i ?></a></li>
+                  <?php endfor; ?>
+
+                  <li class="page-item"><a class="page-link" href="users?pg=<?= $pages; ?>">»</a></li>
+                </ul>
+              </div>
           <!-- /.card -->
         </div>
       </div>

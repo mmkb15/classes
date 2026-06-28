@@ -1,3 +1,13 @@
+<?php
+if(isset($_POST['logout'])){
+  // echo "logout";
+  session_destroy();
+  header('Location: login');
+}
+
+?>
+
+
 <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -126,9 +136,11 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
+        <form method="POST">
+          <button type="submit" name="logout" class="nav-link">
+            <i class="fa fa-sign-out"></i>
+          </button>
+        </form>
       </li>
     </ul>
   </nav>

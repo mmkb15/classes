@@ -67,7 +67,18 @@ class Product
     global $db;
     $sql = "SELECT p.id, p.name, p.price, p.quantity, b.name as brand, c.name as category, p.active, p.image 
     FROM products p, brands b, categories c
-    WHERE p.brand_id = b.id AND p.category_id = c.id  
+    WHERE p.brand_id = b.id AND p.category_id = c.id AND p.active = 1
+    ORDER BY id DESC";
+
+    $result = $db->query($sql);
+    return $result->fetch_all(MYSQLI_ASSOC);
+  }
+    static public function readAllFilter($_category_id)
+  {
+    global $db;
+    $sql = "SELECT p.id, p.name, p.price, p.quantity, b.name as brand, c.name as category, p.active, p.image 
+    FROM products p, brands b, categories c
+    WHERE p.brand_id = b.id AND p.category_id = c.id  AND p.category_id = $_category_id AND p.active = 1
     ORDER BY id DESC";
 
     $result = $db->query($sql);
