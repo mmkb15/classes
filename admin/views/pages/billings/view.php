@@ -68,7 +68,7 @@ $grand_total = ($admission_data['total'] ?? 0) + $total_medicines + $total_tests
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
         <h3 class="mb-0">Bill Details</h3>
         <div class="d-flex gap-2">
-            <a href="?page=billings/print&id=<?= $id ?>" target="_blank" class="btn btn-success py-2 px-4 fw-medium fs-14">
+            <a href="?page=billings/print&id=<?= $id ?>" target="_blank" class="btn btn-primary py-2 px-4 fw-medium fs-14">
                 <i class="material-symbols-outlined fs-18 me-1">print</i> Print
             </a>
             <a href="?page=billings/manage" class="btn btn-secondary py-2 px-4 fw-medium fs-14">

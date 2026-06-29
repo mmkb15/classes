@@ -17889,26 +17889,6 @@ Swiper Slider Style
   font-size: 14px;
   font-weight: 500;
 }
-/* .menu-vertical .menu-sub .menu-item .menu-link::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 10px;
-  height: 10px;
-  border: 1px solid #3A4252;
-  left: 18px;
-  border-radius: 50px;
-  transition: all ease 0.5s;
-} */
- /* Parent category with left accent border */
-
- /* New ADD */
-.menu-item.open > .menu-link.menu-toggle {
-    position: relative;
-    font-weight: 600;
-    color: #6a68c7;
-}
 
 
 
@@ -24997,4 +24977,177 @@ Theme Settings Style
 /*# sourceMappingURL=style.css.map */
 
 
+/* NewLy Added  or Remove*/
 
+ /* Sidebar  */
+  /* .menu-vertical .menu-sub .menu-item .menu-link::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border: 1px solid #3A4252;
+    left: 18px;
+    border-radius: 50px;
+    transition: all ease 0.5s;
+  } */
+  /* Parent category with left accent border */
+
+
+.menu-item.open > .menu-link.menu-toggle {
+    position: relative;
+    font-weight: 600;
+    color: #6a68c7;
+}
+
+
+
+/* Status Badge Styles */
+.badge-status {
+    display: inline-block;
+    padding: 4px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 50px;
+    text-align: center;
+    min-width: 80px;
+}
+
+.badge-status-scheduled {
+    background-color: #e3f0ff;
+    color: #1a73e8;
+}
+
+.badge-status-completed {
+    background-color: #e6f9ed;
+    color: #0a8f4a;
+}
+
+.badge-status-cancelled {
+    background-color: #fde8e8;
+    color: #d93025;
+}
+
+
+/* Admission Status Badge Styles */
+.badge-status-admitted {
+    background-color: #e3f0ff;
+    color: #1a73e8;
+}
+
+.badge-status-discharged {
+    background-color: #e6f9ed;
+    color: #0a8f4a;
+}
+
+
+
+/* Generate Bill Page Cards */
+.card.shadow-sm {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+    transition: box-shadow 0.2s ease;
+}
+
+.card.shadow-sm:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10) !important;
+}
+
+/* Toggle buttons */
+.btn-link {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+
+
+/* =============================================
+   SIDEBAR - CLEAN & FLAT (No dropdowns)
+   ============================================= */
+
+/* Remove all bullets */
+.menu-inner,
+.menu-item {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin: 0 !important;
+}
+
+/* Category Labels */
+.menu-category {
+    display: block;
+    padding: 12px 15px 5px 0px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #8a92a6;
+    margin-top: 10px;
+}
+
+/* Menu Items */
+.menu-item .menu-link {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #5a5a5a;
+    border-radius: 6px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.menu-item .menu-link:hover {
+    background: rgba(73, 54, 245, 0.06);
+    color: #1a1a1a;
+}
+
+.menu-item .menu-link:hover .menu-icon {
+    color: #4936f5;
+}
+
+/* Icons */
+.menu-item .menu-link .menu-icon {
+    font-size: 22px;
+    margin-right: 12px;
+    color: #8a8a8a;
+    transition: color 0.15s ease;
+}
+
+/* Active Menu Item */
+.menu-item.active > .menu-link {
+    background: rgba(73, 54, 245, 0.10) !important;
+    color: #4936f5 !important;
+    font-weight: 500;
+    border-left: 3px solid #4936f5;
+    border-radius: 0 6px 6px 0;
+}
+
+.menu-item.active > .menu-link .menu-icon {
+    color: #4936f5 !important;
+}
+
+
+/* Equal height cards using flexbox */
+.row.align-items-stretch {
+    align-items: stretch;
+}
+
+.row.align-items-stretch .col-md-4 {
+    display: flex;
+    flex-direction: column;
+}
+
+.row.align-items-stretch .col-md-4 .card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    flex: 1;
+}

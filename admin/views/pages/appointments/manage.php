@@ -93,7 +93,7 @@ $appointments = Appointment::readAll();
                                     </div>
                                 </td>
                                 <td style="padding-top: 17px; padding-bottom: 17px;">
-                                    <a href="#" class="d-flex align-items-center">
+                                    <div href="#" class="d-flex align-items-center">
 
                                         <!-- image -->
                                         <?php if (!empty($row['patient_image'])): ?>
@@ -108,7 +108,7 @@ $appointments = Appointment::readAll();
                                         <div class="ms-2 ps-1">
                                             <h6 class="fw-semibold fs-14 mb-0 text-secondary"><?= htmlspecialchars($row['patient_name']) ?></h6>
                                         </div>
-                                    </a>
+                                    </div>
                                 </td>
                                 <td class="text-primary fs-12 fw-normal" style="padding-top: 17px; padding-bottom: 17px;">
                                     <?= htmlspecialchars($row['doctor_name']) ?>
@@ -117,30 +117,37 @@ $appointments = Appointment::readAll();
                                     <?= date('d M, Y', strtotime($row['appointment_date'])) ?>
                                 </td>
                                 <td style="padding-top: 17px; padding-bottom: 17px;">
-                                    <?php 
+                                    <?php
                                     $status_class = '';
-                                    if($row['status'] == 'Scheduled') {
-                                        $status_class = 'bg-primary';
-                                    } elseif($row['status'] == 'Completed') {
-                                        $status_class = 'bg-success';
-                                    } elseif($row['status'] == 'Cancelled') {
-                                        $status_class = 'bg-danger';
-                                    } else {
-                                        $status_class = 'bg-secondary';
+                                    switch ($row['status']) {
+                                        case 'Scheduled':
+                                            $status_class = 'badge-status-scheduled';
+                                            break;
+                                        case 'Completed':
+                                            $status_class = 'badge-status-completed';
+                                            break;
+                                        case 'Cancelled':
+                                            $status_class = 'badge-status-cancelled';
+                                            break;
+                                        case 'Confirmed':
+                                            $status_class = 'badge-status-confirmed';
+                                            break;
+                                        case 'Pending':
+                                            $status_class = 'badge-status-pending';
+                                            break;
+                                        case 'Rescheduled':
+                                            $status_class = 'badge-status-rescheduled';
+                                            break;
+                                        default:
+                                            $status_class = 'badge-status';
                                     }
                                     ?>
-                                    <span class="badge <?= $status_class ?> fs-12 fw-semibold">
+                                    <span class="badge-status <?= $status_class ?>">
                                         <?= $row['status'] ?>
                                     </span>
                                 </td>
                                 <td style="padding-top: 17px; padding-bottom: 17px;">
                                     <div class="d-flex align-items-center gap-1">
-                                        <!-- View Button (optional) -->
-                                        <a href="?page=appointments/view&id=<?= $row['id'] ?>">
-                                            <button class="ps-0 border-0 bg-transparent lh-1 position-relative top-2">
-                                                <i class="material-symbols-outlined fs-18 text-primary">visibility</i>
-                                            </button>
-                                        </a>
 
                                         <!-- Edit Button -->
                                         <a href="?page=appointments/edit&id=<?= $row['id'] ?>">

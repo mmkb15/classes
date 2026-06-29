@@ -16,8 +16,10 @@ if(!$prescription) {
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
         <h3 class="mb-0">Prescription Details</h3>
         <div>
-            <a href="?page=prescriptions/print&id=<?= $id ?>" class="btn btn-primary" target="_blank">Print</a>
-            <a href="?page=prescriptions/manage" class="btn btn-secondary">Back</a>
+            <a href="?page=prescriptions/print&id=<?= $id ?>" class="btn btn-primary py-2 px-4 fw-medium fs-14" target="_blank">
+                <i class="material-symbols-outlined fs-18 me-1">print</i> Print
+            </a>
+            <a href="?page=prescriptions/manage" class="btn btn-secondary py-2 px-4 fw-medium fs-14">Back</a>
         </div>
     </div>
 

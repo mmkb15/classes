@@ -23,13 +23,14 @@ class Billing
     /**
      * Create a new bill
      */
-    public function create() {
-        global $db;
-        $sql = "INSERT INTO billings (patient_id, admission_id, amount, bill_date, description) 
-                VALUES ('$this->patient_id', '$this->admission_id', '$this->amount', '$this->bill_date', '$this->description')";
-        $db->query($sql);
-        return $db->error ? $db->error : true;
-    }
+        public function create() {
+            global $db;
+            $admission_id = ($this->admission_id !== null && $this->admission_id !== '') ? "'{$this->admission_id}'" : "NULL";
+            $sql = "INSERT INTO billings (patient_id, admission_id, amount, bill_date, description) 
+                    VALUES ('{$this->patient_id}', $admission_id, '{$this->amount}', '{$this->bill_date}', '{$this->description}')";
+            $db->query($sql);
+            return $db->error ? $db->error : true;
+        }
 
     /**
      * Update an existing bill
@@ -94,6 +95,10 @@ class Billing
      * Calculate total cost for a patient
      * Returns an array with breakdown and total
      */
+/**
+ * Calculate total cost for a patient
+ * Returns an array with breakdown and total
+ */
     static public function calculatePatientBill($_patient_id) {
         global $db;
 
@@ -102,6 +107,8 @@ class Billing
             'medicines' => 0,
             'tests' => 0,
             'total' => 0,
+            'medicines_list' => [],
+            'tests_list' => [],
             'admission_details' => null
         ];
 
@@ -114,41 +121,43 @@ class Billing
         $result = $db->query($sql);
         $admission = $result->fetch_assoc();
 
-        if($admission) {
+        if ($admission) {
             $admit_date = new DateTime($admission['admit_date']);
             $today = new DateTime();
-            $days = $admit_date->diff($today)->days + 1; // +1 for inclusive
+            $days = $admit_date->diff($today)->days + 1;
             $rate = $admission['rate_per_day'] ?? 500;
             $breakdown['admission'] = $days * $rate;
             $breakdown['admission_details'] = [
                 'days' => $days,
                 'rate_per_day' => $rate,
                 'room' => $admission['room_no'] ?? 'N/A',
-                'room_type' => $admission['room_type'] ?? 'General',
-                'admission_id' => $admission['id']
+                'room_type' => $admission['room_type'] ?? 'General'
             ];
         }
 
-        // 2. Calculate medicine costs from prescriptions
-        $sql = "SELECT SUM(m.price) AS total_med_price 
+        // 2. Calculate medicine costs with list
+        $sql = "SELECT m.name, m.strength, m.price 
                 FROM prescription_medicines AS pm
                 LEFT JOIN medicines AS m ON pm.medicine_id = m.id
                 LEFT JOIN prescriptions AS p ON pm.prescription_id = p.id
                 WHERE p.patient_id = $_patient_id";
         $result = $db->query($sql);
-        $med = $result->fetch_assoc();
-        $breakdown['medicines'] = $med['total_med_price'] ?? 0;
+        $medicines = $result->fetch_all(MYSQLI_ASSOC);
+        $breakdown['medicines_list'] = $medicines;
+        $breakdown['medicines'] = array_sum(array_column($medicines, 'price'));
 
-        // 3. Calculate test costs from prescriptions
-        $sql = "SELECT SUM(t.price) AS total_test_price 
+        // 3. Calculate test costs with list
+        $sql = "SELECT t.name, t.price 
                 FROM prescription_tests AS pt
                 LEFT JOIN tests AS t ON pt.test_id = t.id
                 LEFT JOIN prescriptions AS p ON pt.prescription_id = p.id
                 WHERE p.patient_id = $_patient_id";
         $result = $db->query($sql);
-        $test = $result->fetch_assoc();
-        $breakdown['tests'] = $test['total_test_price'] ?? 0;
+        $tests = $result->fetch_all(MYSQLI_ASSOC);
+        $breakdown['tests_list'] = $tests;
+        $breakdown['tests'] = array_sum(array_column($tests, 'price'));
 
+        // 4. Calculate total (FIXED: was $breaknowdown)
         $breakdown['total'] = $breakdown['admission'] + $breakdown['medicines'] + $breakdown['tests'];
 
         return $breakdown;

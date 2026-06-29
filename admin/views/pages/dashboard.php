@@ -1,420 +1,394 @@
+<?php
+// =============================================
+// DASHBOARD STATISTICS - ALL MODULES
+// =============================================
 
+// Core Counts
+$total_patients   = $db->query("SELECT COUNT(*) AS count FROM patients")->fetch_assoc()['count'];
+$total_doctors    = $db->query("SELECT COUNT(*) AS count FROM doctors")->fetch_assoc()['count'];
+$total_appointments = $db->query("SELECT COUNT(*) AS count FROM appointments")->fetch_assoc()['count'];
+$total_prescriptions = $db->query("SELECT COUNT(*) AS count FROM prescriptions")->fetch_assoc()['count'];
+$total_admissions = $db->query("SELECT COUNT(*) AS count FROM admissions")->fetch_assoc()['count'];
+$total_medicines  = $db->query("SELECT COUNT(*) AS count FROM medicines")->fetch_assoc()['count'];
+$total_tests      = $db->query("SELECT COUNT(*) AS count FROM tests")->fetch_assoc()['count'];
+$total_bills      = $db->query("SELECT COUNT(*) AS count FROM billings")->fetch_assoc()['count'];
 
-                    <div class="main-content-container overflow-hidden">
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <div class="card border-0 rounded-3 welcome-box mb-4 position-relative z-1 overflow-hidden" style="background-color: #4936F5;">
-                                    <div class="card-body p-4">
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-9 col-sm-6 col-xl-10 col-xxl-7">
-                                                <div style="padding-bottom: 35px;">
-                                                    <h3 class="text-white fw-semibold mb-1 fs-20">Hi, <span style="color: #FFE8D4;">Dr. Olivia!</span></h3>
-                                                    <p class="text-body-bg">Your schedule today</p>
-                                                </div>
+// Today's Appointments
+$today = date('Y-m-d');
+$today_appointments = $db->query("SELECT COUNT(*) AS count FROM appointments WHERE appointment_date = '$today'")->fetch_assoc()['count'];
 
-                                                <div class="d-flex align-items-center flex-wrap gap-3 gap-xxl-4">
-                                                    <div class="d-flex align-items-center welcome-status-item">
-                                                        <div class="flex-shrink-0">
-                                                            <i class="material-symbols-outlined icon-bg">airplay</i>
-                                                        </div>
-                                                        <div class="flex-grow-1 ms-3">
-                                                            <h5 class="text-white fw-semibold mb-0 fs-18">320</h5>
-                                                            <p class="text-light">Patients</p>
-                                                        </div>
-                                                    </div>
-                                                
-                                                    <div class="d-flex align-items-center welcome-status-item">
-                                                        <div class="flex-shrink-0">
-                                                            <i class="material-symbols-outlined text-primary-div" style="background-color: #F3E8FF;">local_library</i>
-                                                        </div>
-                                                        <div class="flex-grow-1 ms-3">
-                                                            <h5 class="text-white fw-semibold mb-0 fs-18">18</h5>
-                                                            <p class="text-light">Surgeries</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-sm-6 col-xl-2 col-xxl-5">
-                                                <div class="welcome-img text-center text-sm-end mt-4 mt-sm-0">
-                                                    <img src="assets/images/dr-olivia.png" alt="welcome">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img src="assets/images/shape-7.png" class="position-absolute top-50 end-0 translate-middle-y z-n1 h-100" alt="shape">
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="card bg-primary-div bg-opacity-25 border-0 rounded-3 p-4 mb-4 overflow-hidden">
-                                            <span class="d-block mb-3" style="color: #526077;">Overall Visitors</span>
-                                            <div class="d-flex align-items-center">
-                                                <h3 class="fs-24 fw-medium mb-0">45,745</h3>
-                                                <span class="d-inline-block px-2 text-success border-success border rounded-pill bg-opacity-25 fs-12 fw-medium ms-2" style="background-color: #D8FFC8;">
-                                                    <i class="ri-arrow-up-fill"></i>
-                                                    7%
-                                                </span>
-                                            </div>
-                                            <div style="margin: -16px -35px -80px -38px;">
-                                                <div id="overall_visitors"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="card bg-danger bg-opacity-25 border-0 rounded-3 p-4 mb-4 overflow-hidden">
-                                            <span class="d-block mb-3" style="color: #526077;">Patients last 7 days</span>
-                                            <div class="d-flex align-items-center">
-                                                <h3 class="fs-24 fw-medium mb-0">768</h3>
-                                                <span class="d-inline-block px-2 text-danger border-danger border rounded-pill bg-opacity-25 fs-12 fw-medium ms-2" style="background-color: #FFC8C0;">
-                                                    <i class="ri-arrow-up-fill"></i>
-                                                    7%
-                                                </span>
-                                            </div>
-                                            <div style="margin: -5px -19px -31px -32px;">
-                                                <div id="patients_last_7_days_service"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+// Active Admissions (Admitted)
+$active_admissions = $db->query("SELECT COUNT(*) AS count FROM admissions WHERE status = 'Admitted'")->fetch_assoc()['count'];
+
+// Pending Appointments (Scheduled)
+$pending_appointments = $db->query("SELECT COUNT(*) AS count FROM appointments WHERE status = 'Scheduled'")->fetch_assoc()['count'];
+
+// Recent Appointments (Last 5)
+$recent_appointments = $db->query("
+    SELECT a.*, p.name AS patient_name, d.name AS doctor_name 
+    FROM appointments a
+    LEFT JOIN patients p ON a.patient_id = p.id
+    LEFT JOIN doctors d ON a.doctor_id = d.id
+    ORDER BY a.id DESC LIMIT 5
+")->fetch_all(MYSQLI_ASSOC);
+
+// Recent Admissions (Last 5)
+$recent_admissions = $db->query("
+    SELECT a.*, p.name AS patient_name, r.room_no 
+    FROM admissions a
+    LEFT JOIN patients p ON a.patient_id = p.id
+    LEFT JOIN rooms r ON a.room_id = r.id
+    ORDER BY a.id DESC LIMIT 5
+")->fetch_all(MYSQLI_ASSOC);
+?>
+
+<div class="main-content-container overflow-hidden">
+
+    <!-- ==========================================
+    WELCOME SECTION
+    ========================================== -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card bg-primary bg-opacity-10 border-0 rounded-3 mb-4">
+                <div class="card-body p-4">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center">
+                        <div>
+                            <h3 class="mb-1">Welcome to City Hospital Dashboard</h3>
+                            <p class="text-secondary mb-0">
+                                Today is <strong><?= date('l, d M Y') ?></strong> | 
+                                You have <strong><?= $today_appointments ?></strong> appointments today.
+                            </p>
+                        </div>
+                        <div class="d-flex gap-2 mt-2 mt-sm-0">
+                            <a href="?page=patients/create" class="btn btn-primary py-2 px-4 fw-medium fs-14">
+                                <i class="material-symbols-outlined fs-18 me-1">add</i> New Patient
+                            </a>
+                            <a href="?page=appointments/create" class="btn btn-outline-primary py-2 px-4 fw-medium fs-14">
+                                <i class="material-symbols-outlined fs-18 me-1">add</i> New Appointment
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- ==========================================
+STATISTICS CARDS - ROW 1 (Core Modules)
+========================================== -->
+<div class="row">
+    <!-- Patients -->
+    <div class="col-xl-3 col-sm-6">
+        <div class="card border-0 rounded-3 mb-4" style="background: rgba(73, 54, 245, 0.08);">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="d-block fs-12 fw-medium text-body-color-50 mb-2">Total Patients</span>
+                        <h3 class="mb-0 fs-24 fw-semibold"><?= number_format($total_patients) ?></h3>
+                    </div>
+                    <div class="wh-50 rounded-3 d-flex align-items-center justify-content-center" style="background: rgba(73, 54, 245, 0.15);">
+                        <i class="material-symbols-outlined fs-24" style="color: #4936f5;">group</i>
+                    </div>
+                </div>
+                <a href="?page=patients/manage" class="fs-12 text-primary text-decoration-none mt-2 d-inline-block">View All →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Doctors -->
+    <div class="col-xl-3 col-sm-6">
+        <div class="card border-0 rounded-3 mb-4" style="background: rgba(10, 143, 74, 0.08);">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="d-block fs-12 fw-medium text-body-color-50 mb-2">Total Doctors</span>
+                        <h3 class="mb-0 fs-24 fw-semibold"><?= number_format($total_doctors) ?></h3>
+                    </div>
+                    <div class="wh-50 rounded-3 d-flex align-items-center justify-content-center" style="background: rgba(10, 143, 74, 0.15);">
+                        <i class="material-symbols-outlined fs-24" style="color: #0a8f4a;">medical_services</i>
+                    </div>
+                </div>
+                <a href="?page=doctors/manage" class="fs-12 text-primary text-decoration-none mt-2 d-inline-block">View All →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Appointments -->
+    <div class="col-xl-3 col-sm-6">
+        <div class="card border-0 rounded-3 mb-4" style="background: rgba(0, 131, 143, 0.08);">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="d-block fs-12 fw-medium text-body-color-50 mb-2">Total Appointments</span>
+                        <h3 class="mb-0 fs-24 fw-semibold"><?= number_format($total_appointments) ?></h3>
+                    </div>
+                    <div class="wh-50 rounded-3 d-flex align-items-center justify-content-center" style="background: rgba(0, 131, 143, 0.15);">
+                        <i class="material-symbols-outlined fs-24" style="color: #00838f;">calendar_month</i>
+                    </div>
+                </div>
+                <a href="?page=appointments/manage" class="fs-12 text-primary text-decoration-none mt-2 d-inline-block">View All →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prescriptions -->
+    <div class="col-xl-3 col-sm-6">
+        <div class="card border-0 rounded-3 mb-4" style="background: rgba(249, 168, 37, 0.08);">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="d-block fs-12 fw-medium text-body-color-50 mb-2">Total Prescriptions</span>
+                        <h3 class="mb-0 fs-24 fw-semibold"><?= number_format($total_prescriptions) ?></h3>
+                    </div>
+                    <div class="wh-50 rounded-3 d-flex align-items-center justify-content-center" style="background: rgba(249, 168, 37, 0.15);">
+                        <i class="material-symbols-outlined fs-24" style="color: #f9a825;">clinical_notes</i>
+                    </div>
+                </div>
+                <a href="?page=prescriptions/manage" class="fs-12 text-primary text-decoration-none mt-2 d-inline-block">View All →</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================
+STATISTICS CARDS - ROW 2 (Extended Modules)
+========================================== -->
+<div class="row">
+    <!-- Admissions -->
+    <div class="col-xl-3 col-sm-6">
+        <div class="card border-0 rounded-3 mb-4" style="background: rgba(217, 48, 37, 0.08);">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="d-block fs-12 fw-medium text-body-color-50 mb-2">Total Admissions</span>
+                        <h3 class="mb-0 fs-24 fw-semibold"><?= number_format($total_admissions) ?></h3>
+                    </div>
+                    <div class="wh-50 rounded-3 d-flex align-items-center justify-content-center" style="background: rgba(217, 48, 37, 0.15);">
+                        <i class="material-symbols-outlined fs-24" style="color: #d93025;">bed</i>
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <span class="badge-status badge-status-admitted"><?= $active_admissions ?> Active</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Medicines -->
+    <div class="col-xl-3 col-sm-6">
+        <div class="card border-0 rounded-3 mb-4" style="background: rgba(108, 117, 125, 0.08);">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="d-block fs-12 fw-medium text-body-color-50 mb-2">Total Medicines</span>
+                        <h3 class="mb-0 fs-24 fw-semibold"><?= number_format($total_medicines) ?></h3>
+                    </div>
+                    <div class="wh-50 rounded-3 d-flex align-items-center justify-content-center" style="background: rgba(108, 117, 125, 0.15);">
+                        <i class="material-symbols-outlined fs-24" style="color: #6c757d;">vaccines</i>
+                    </div>
+                </div>
+                <a href="?page=medicines/manage" class="fs-12 text-primary text-decoration-none mt-2 d-inline-block">View All →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tests -->
+    <div class="col-xl-3 col-sm-6">
+        <div class="card border-0 rounded-3 mb-4" style="background: rgba(111, 66, 193, 0.08);">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="d-block fs-12 fw-medium text-body-color-50 mb-2">Total Tests</span>
+                        <h3 class="mb-0 fs-24 fw-semibold"><?= number_format($total_tests) ?></h3>
+                    </div>
+                    <div class="wh-50 rounded-3 d-flex align-items-center justify-content-center" style="background: rgba(111, 66, 193, 0.15);">
+                        <i class="material-symbols-outlined fs-24" style="color: #6f42c1;">science</i>
+                    </div>
+                </div>
+                <a href="?page=tests/manage" class="fs-12 text-primary text-decoration-none mt-2 d-inline-block">View All →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bills -->
+    <div class="col-xl-3 col-sm-6">
+        <div class="card border-0 rounded-3 mb-4" style="background: rgba(0, 150, 136, 0.08);">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="d-block fs-12 fw-medium text-body-color-50 mb-2">Total Bills</span>
+                        <h3 class="mb-0 fs-24 fw-semibold"><?= number_format($total_bills) ?></h3>
+                    </div>
+                    <div class="wh-50 rounded-3 d-flex align-items-center justify-content-center" style="background: rgba(0, 150, 136, 0.15);">
+                        <i class="material-symbols-outlined fs-24" style="color: #009688;">receipt_long</i>
+                    </div>
+                </div>
+                <a href="?page=billings/manage" class="fs-12 text-primary text-decoration-none mt-2 d-inline-block">View All →</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- ==========================================
+    STATUS SUMMARY ROW
+    ========================================== -->
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card bg-white border-0 rounded-3 mb-4">
+                <div class="card-body p-20">
+                    <h4 class="fs-16 fw-semibold mb-3">Appointments Summary</h4>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <span class="badge-status badge-status-scheduled" style="min-width:20px;">&nbsp;</span>
+                                <span>Scheduled: <strong><?= $pending_appointments ?></strong></span>
                             </div>
-                            <div class="col-lg-7">
-                                <div class="card bg-white border-0 rounded-3 mb-4">
-                                    <div class="card-body p-4">
-                                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3 mb-lg-30">
-                                            <h3 class="mb-0">Patient Admissions & Discharges</h3>
-                                            <select class="form-select month-select form-control w-135" aria-label="Default select example">
-                                                <option selected>Last Week</option>
-                                                <option value="1">Last 60 Days</option>
-                                                <option value="2">Last 90 Days</option>
-                                            </select>
-                                        </div>
-
-                                        <div style="margin: -5px -9px -28px -17px;">
-                                            <div id="patient_admissions_discharges"></div> 
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <span class="badge-status badge-status-completed" style="min-width:20px;">&nbsp;</span>
+                                <span>Completed: <strong><?= $total_appointments - $pending_appointments ?></strong></span>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-xxl-5">
-                                <div class="card bg-white border-0 rounded-3 mb-4">
-                                    <div class="card-body p-4">
-                                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3 mb-lg-30">
-                                            <div class="">
-                                                <h3 class="mb-0">Emergency Room Visits</h3>
-                                                <p>ER based on patient visits</p>
-                                            </div>
-                                            <select class="form-select month-select form-control w-135" aria-label="Default select example">
-                                                <option selected>Last Week</option>
-                                                <option value="1">Last 60 Days</option>
-                                                <option value="2">Last 90 Days</option>
-                                            </select>
-                                        </div>
-
-                                        <div style="margin: -36px -21px -63px -18px;">
-                                            <div id="emergency_room_visits" style="margin: 35px auto;"></div> 
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <span class="badge-status badge-status-cancelled" style="min-width:20px;">&nbsp;</span>
+                                <span>Cancelled: <strong><?= $total_appointments - $pending_appointments ?></strong></span>
                             </div>
-                            <div class="col-lg-4 col-xxl-2">
-                                <div class="card bg-white border-0 rounded-3 mb-4">
-                                    <div class="card-body p-4">
-                                        <span class="d-block mb-2">Critical Patients</span>
-                                        <h3 class="fs-18 mb-3">780</h3>
-
-                                        <div style="margin: 0 -10px 0 -12px;">
-                                            <div id="critical_patients"></div>
-                                        </div>
-
-                                        <div class="d-flex align-items-center mb-2 mt-2">
-                                            <span style="width: 12px; height: 2px;" class="bg-primary d-inline-block me-2"></span>
-                                            <span>Cardiology: <span class="fw-semibold">280</span></span>
-                                        </div>
-                                        <div class="d-flex align-items-center mb-0">
-                                            <span style="width: 12px; height: 2px;" class="bg-danger d-inline-block me-2"></span>
-                                            <span>Orthopedics: <span class="fw-semibold">600</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-8 col-xxl-5">
-                                <div class="card bg-white border-0 rounded-3 mb-4">
-                                    <div class="card-body p-4">
-                                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3 mb-lg-30">
-                                            <div class="">
-                                                <h3 class="mb-0">Bed Occupancy Rate</h3>
-                                                <p>Currently occupied vs. available.</p>
-                                            </div>
-                                            <select class="form-select month-select form-control w-135" aria-label="Default select example">
-                                                <option selected>Todays</option>
-                                                <option value="1">Last 60 Days</option>
-                                                <option value="2">Last 90 Days</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="row align-items-center">
-                                            <div class="col-sm-6">
-                                                <div class="d-flex align-items-center welcome-status-item mb-4">
-                                                    <div class="flex-shrink-0">
-                                                        <i class="material-symbols-outlined icon-bg bg-primary bg-opacity-25 text-primary">airplay</i>
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-3">
-                                                        <h5 class="mb-0 fs-18">1,275</h5>
-                                                        <p>Total Beds</p>
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex align-items-center welcome-status-item mb-4">
-                                                    <div class="flex-shrink-0">
-                                                        <i class="material-symbols-outlined icon-bg bg-primary-div bg-opacity-25 text-primary-div">bed</i>
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-3">
-                                                        <h5 class="mb-0 fs-18">825</h5>
-                                                        <p>Occupied Beds</p>
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex align-items-center welcome-status-item mb-0">
-                                                    <div class="flex-shrink-0">
-                                                        <i class="material-symbols-outlined icon-bg bg-success bg-opacity-25 text-success">featured_seasonal_and_gifts</i>
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-3">
-                                                        <h5 class="mb-0 fs-18">450</h5>
-                                                        <p>Available Beds</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 mt-3 mt-sm-0">
-                                                <div class="text-center" style="margin-top: -8px;">
-                                                    <div id="bed_occupancy_rate"></div>
-                                                    <p class="fs-12 lh-16">The donut or pie chart representing the occupancy rate.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-7 col-xl-8">
-                                <div class="card bg-white border-0 rounded-3 mb-4">
-                                    <div class="card-body p-4">
-                                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 pb-3">
-                                            <h3 class="mb-0">Patient Appointments</h3>
-                                            <div class="position-relative">
-                                                <input type="text" class="form-control" id="range_datepicker" style="width: 230px; height: 36px; padding-left: 35px;" placeholder="29/10/2024 - 28/11/2024"/>
-                                                <i class="ri-calendar-line position-absolute top-50 start-0 translate-middle-y ps-3"></i>
-                                            </div>
-                                        </div>
-
-                                        <div class="default-table-area style-two patient-table">
-                                            <div class="table-responsive">
-                                                <table class="table align-middle border-0">
-                                                    <thead>
-                                                        <tr class="border-bottom">
-                                                            <th scope="col" class="bg-transparent">Patient Name</th>
-                                                            <th scope="col" class="text-end bg-transparent">Date</th>
-                                                            <th scope="col" class="text-end bg-transparent">Time</th>
-                                                            <th scope="col" class="bg-transparent">Assigned</th>
-                                                            <th scope="col" class="text-end bg-transparent">Department</th>
-                                                            <th scope="col" class="text-end bg-transparent">Status</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="fw-medium">John Doe</td>
-                                                            <td class="text-end fw-medium text-body">Sept 12, 2024</td>
-                                                            <td class="text-end fw-medium text-body">10:30 AM</td>
-                                                            <td class="fw-medium">
-                                                                <div class="d-flex align-items-center">
-                                                                    <img src="assets/images/user-71.png" class="rounded-circle" style="width: 34px; height: 34px;" alt="user">
-                                                                    <span class="ps-2 fw-medium">Dr. Sarah</span>
-                                                                </div>
-                                                            </td>
-                                                            <td class="text-end fw-medium text-body">Cardiology</td>
-                                                            <td class="text-end">
-                                                                <span class="d-inline-block py-1 px-2 bg-success bg-opacity-10 rounded-2 text-success">Confirmed</span>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="fw-medium">Jane Smith</td>
-                                                            <td class="text-end fw-medium text-body">Sep 11, 2024	</td>
-                                                            <td class="text-end fw-medium text-body">11:00 AM</td>
-                                                            <td class="fw-medium">
-                                                                <div class="d-flex align-items-center">
-                                                                    <img src="assets/images/user-72.png" class="rounded-circle" style="width: 34px; height: 34px;" alt="user">
-                                                                    <span class="ps-2 fw-medium">Dr. Mark</span>
-                                                                </div>
-                                                            </td>
-                                                            <td class="text-end fw-medium text-body">Pediatrics</td>
-                                                            <td class="text-end">
-                                                                <span class="d-inline-block py-1 px-2 bg-danger-div bg-opacity-10 rounded-2 text-danger">Rescheduled</span>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="fw-medium">Robert Clark</td>
-                                                            <td class="text-end fw-medium text-body">Sep 10, 2024</td>
-                                                            <td class="text-end fw-medium text-body">1:00 PM</td>
-                                                            <td class="fw-medium">
-                                                                <div class="d-flex align-items-center">
-                                                                    <img src="assets/images/user-73.png" class="rounded-circle" style="width: 34px; height: 34px;" alt="user">
-                                                                    <span class="ps-2 fw-medium">Dr. Emily</span>
-                                                                </div>
-                                                            </td>
-                                                            <td class="text-end fw-medium text-body">Orthopedics</td>
-                                                            <td class="text-end">
-                                                                <span class="d-inline-block py-1 px-2 bg-danger bg-opacity-10 rounded-2 text-danger">Cancelled</span>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="fw-medium">Linda Green</td>
-                                                            <td class="text-end fw-medium text-body">Sep 09, 2024</td>
-                                                            <td class="text-end fw-medium text-body">9:30 AM</td>
-                                                            <td class="fw-medium">
-                                                                <div class="d-flex align-items-center">
-                                                                    <img src="assets/images/user-74.png" class="rounded-circle" style="width: 34px; height: 34px;" alt="user">
-                                                                    <span class="ps-2 fw-medium">Dr. Adam</span>
-                                                                </div>
-                                                            </td>
-                                                            <td class="text-end fw-medium text-body">Dermatology</td>
-                                                            <td class="text-end">
-                                                                <span class="d-inline-block py-1 px-2 bg-success bg-opacity-10 rounded-2 text-success">Confirmed</span>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="fw-medium">Michael White</td>
-                                                            <td class="text-end fw-medium text-body">Sep 08, 2024</td>
-                                                            <td class="text-end fw-medium text-body">2:00 PM</td>
-                                                            <td class="fw-medium">
-                                                                <div class="d-flex align-items-center">
-                                                                    <img src="assets/images/user-75.png" class="rounded-circle" style="width: 34px; height: 34px;" alt="user">
-                                                                    <span class="ps-2 fw-medium">Dr. Rebecca</span>
-                                                                </div>
-                                                            </td>
-                                                            <td class="text-end fw-medium text-body">Surgery</td>
-                                                            <td class="text-end">
-                                                                <span class="d-inline-block py-1 px-2 bg-primary-div bg-opacity-10 rounded-2 text-primary-div">Pending</span>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                            <div class="d-flex justify-content-center justify-content-sm-between align-items-center text-center flex-wrap gap-2 showing-wrap mt-4">
-                                                <span class="fs-12 fw-medium">Showing 5 of 30 Results</span>
-                
-                                                <nav aria-label="Page navigation example">
-                                                    <ul class="pagination mb-0 justify-content-center">
-                                                        <li class="page-item">
-                                                            <a class="page-link icon" href="hospital.html" aria-label="Previous">
-                                                                <i class="material-symbols-outlined">keyboard_arrow_left</i>
-                                                            </a>
-                                                        </li>
-                                                        <li class="page-item"><a class="page-link active" href="hospital.html">1</a></li>
-                                                        <li class="page-item"><a class="page-link" href="hospital.html">2</a></li>
-                                                        <li class="page-item"><a class="page-link" href="hospital.html">3</a></li>
-                                                        <li class="page-item"><a class="page-link" href="hospital.html">4</a></li>
-                                                        <li class="page-item">
-                                                            <a class="page-link icon" href="hospital.html" aria-label="Next">
-                                                                <i class="material-symbols-outlined">keyboard_arrow_right</i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </nav>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-5 col-xl-4">
-                                <div class="card border-0 rounded-3 mb-4" style="background-color: #7C24CC;">
-                                    <div class="card-body p-4 py-5 p-xl-5 text-center">
-                                        <h2 class="text-white fs-24 fw-semibold mb-2">Schedule Appointment</h2>
-                                        <p class="text-white fs-14 m-auto" style="max-width: 273px;">Quickly schedule an appointment for a patient with any available doctor</p>
-                                        <div class="py-4 mb-1">
-                                            <img src="assets/images/schedule.png" alt="schedule">
-                                        </div>
-                                        <button class="btn btn-primary py-2 px-4 fs-16 fw-medium text-white">Book Appointment</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-4">
-                                <div class="card bg-white border-0 rounded-3 mb-4">
-                                    <div class="card-body p-4">
-                                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3 mb-lg-30">
-                                            <h3 class="mb-0">Patient by Age</h3>
-                                            <select class="form-select month-select form-control p-0 h-auto border-0 w-90" style="background-position: right 0 center;" aria-label="Default select example">
-                                                <option selected>Last Week</option>
-                                                <option value="1">Last Month</option>
-                                                <option value="2">Last Year</option>
-                                            </select>
-                                        </div>
-
-                                        <div style="margin-top: -9px;">
-                                            <div id="patient_by_age"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-8">
-                                <div class="card border-0 rounded-3 mb-4" style="background-color: #FFF5ED;">
-                                    <div class="card-body p-4">
-                                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3 mb-lg-30">
-                                            <h3 class="mb-0">Hospital Earnings</h3>
-                                            <select class="form-select month-select form-control p-0 h-auto border-0 w-90 bg-transparent" style="background-position: right 0 center;" aria-label="Default select example">
-                                                <option selected>This Week</option>
-                                                <option value="1">Last Month</option>
-                                                <option value="2">Last Year</option>
-                                            </select>
-                                        </div>
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-5">
-                                                <div class="hospital-img pt-3 pb-4 text-center">
-                                                    <img src="assets/images/hospital.png" alt="hospital">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-7">
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <div class="card bg-white p-4 border-0 rounded-3 mb-4 exchange-for-dark">
-                                                            <h2 class="fs-24 fw-medium mb-1">$120,000</h2>
-                                                            <p class="fs-12 mb-0">Total Profit <span class="text-danger ms-1"> <i class="ri-arrow-down-fill"></i>5%</span></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <div class="card bg-white p-4 border-0 rounded-3 mb-4 exchange-for-dark">
-                                                            <h2 class="fs-24 fw-medium mb-1">$80,000</h2>
-                                                            <p class="fs-12 mb-0">Total Costs <span class="text-success ms-1"> <i class="ri-arrow-up-fill"></i>3%</span></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="position-relative z-1">
-                                                            <div class="card bg-white p-4 border-0 rounded-3 mb-0 exchange-for-dark">
-                                                                <div class="row align-items-center">
-                                                                    <div class="col-lg-7">
-                                                                        <h2 class="fs-24 fw-medium mb-1">$900,000</h2>
-                                                                        <p class="fs-12 mb-0">Total Earnings <span class="text-success ms-1"> <i class="ri-arrow-up-fill"></i>3%</span></p>
-                                                                    </div>
-                                                                    <div class="col-lg-5">
-                                                                        <div style="margin: -30px -10px -30px 0;">
-                                                                            <div id="total_earnings"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="bg-white bg-opacity-75 p-2 p-md-3 mx-3 mx-md-5 rounded-bottom-3 exchange-for-dark"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>  
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge-status badge-status-admitted" style="min-width:20px;">&nbsp;</span>
+                                <span>Active Admissions: <strong><?= $active_admissions ?></strong></span>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
 
-                    <div class="flex-grow-1"></div>
+        <div class="col-xl-6">
+            <div class="card bg-white border-0 rounded-3 mb-4">
+                <div class="card-body p-20">
+                    <h4 class="fs-16 fw-semibold mb-3">Quick Actions</h4>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="?page=patients/create" class="btn btn-outline-primary py-2 px-3 fw-medium fs-14">
+                            <i class="material-symbols-outlined fs-18 me-1">person_add</i> Add Patient
+                        </a>
+                        <a href="?page=doctors/create" class="btn btn-outline-success py-2 px-3 fw-medium fs-14">
+                            <i class="material-symbols-outlined fs-18 me-1">medical_services</i> Add Doctor
+                        </a>
+                        <a href="?page=appointments/create" class="btn btn-outline-info py-2 px-3 fw-medium fs-14">
+                            <i class="material-symbols-outlined fs-18 me-1">calendar_month</i> New Appointment
+                        </a>
+                        <a href="?page=prescriptions/create" class="btn btn-outline-warning py-2 px-3 fw-medium fs-14">
+                            <i class="material-symbols-outlined fs-18 me-1">clinical_notes</i> Write Prescription
+                        </a>
+                        <a href="?page=admissions/create" class="btn btn-outline-danger py-2 px-3 fw-medium fs-14">
+                            <i class="material-symbols-outlined fs-18 me-1">bed</i> Admit Patient
+                        </a>
+                        <a href="?page=billings/create" class="btn btn-outline-secondary py-2 px-3 fw-medium fs-14">
+                            <i class="material-symbols-outlined fs-18 me-1">receipt_long</i> Generate Bill
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                   
+    <!-- ==========================================
+    RECENT ACTIVITY - 2 COLUMN LAYOUT
+    ========================================== -->
+    <div class="row">
+        <!-- Recent Appointments -->
+        <div class="col-xl-6">
+            <div class="card bg-white border-0 rounded-3 mb-4">
+                <div class="card-body p-20">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-20">
+                        <h4 class="mb-0 fs-16 fw-semibold">Recent Appointments</h4>
+                        <a href="?page=appointments/manage" class="btn btn-outline-primary fs-14 fw-medium rounded-3 hover-bg" style="padding: 1.5px 13px;">
+                            <span class="py-sm-1 d-block">View All</span>
+                        </a>
+                    </div>
+                    <div class="default-table-area">
+                        <div class="table-responsive">
+                            <table class="table align-middle">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Patient</th>
+                                        <th scope="col">Doctor</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if (count($recent_appointments) > 0): ?>
+                                        <?php foreach ($recent_appointments as $row): ?>
+                                        <tr>
+                                            <td><?= htmlspecialchars($row['patient_name']) ?></td>
+                                            <td><?= htmlspecialchars($row['doctor_name']) ?></td>
+                                            <td><?= date('d M, Y', strtotime($row['appointment_date'])) ?></td>
+                                            <td>
+                                                <span class="badge-status <?= $row['status'] == 'Scheduled' ? 'badge-status-scheduled' : ($row['status'] == 'Completed' ? 'badge-status-completed' : 'badge-status-cancelled') ?>">
+                                                    <?= $row['status'] ?>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <tr><td colspan="4" class="text-center text-muted">No appointments found.</td></tr>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Admissions -->
+        <div class="col-xl-6">
+            <div class="card bg-white border-0 rounded-3 mb-4">
+                <div class="card-body p-20">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-20">
+                        <h4 class="mb-0 fs-16 fw-semibold">Recent Admissions</h4>
+                        <a href="?page=admissions/manage" class="btn btn-outline-primary fs-14 fw-medium rounded-3 hover-bg" style="padding: 1.5px 13px;">
+                            <span class="py-sm-1 d-block">View All</span>
+                        </a>
+                    </div>
+                
+
+                    <div class="default-table-area">
+                        <div class="table-responsive">
+                            <table class="table align-middle">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Patient</th>
+                                        <th scope="col">Room</th>
+                                        <th scope="col">Admit Date</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if (count($recent_admissions) > 0): ?>
+                                        <?php foreach ($recent_admissions as $row): ?>
+                                        <tr>
+                                            <td><?= htmlspecialchars($row['patient_name']) ?></td>
+                                            <td><?= $row['room_no'] ?></td>
+                                            <td><?= date('d M, Y', strtotime($row['admit_date'])) ?></td>
+                                            <td>
+                                                <span class="badge-status <?= $row['status'] == 'Admitted' ? 'badge-status-admitted' : 'badge-status-discharged' ?>">
+                                                    <?= $row['status'] ?>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <tr><td colspan="4" class="text-center text-muted">No admissions found.</td></tr>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

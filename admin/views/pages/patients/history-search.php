@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 require_once 'models/patient.class.php';
 $patients = Patient::readAll();
 
@@ -34,4 +34,4 @@ $patients = Patient::readAll();
             </form>
         </div>
     </div>
-</div>
+</div> -->

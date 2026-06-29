@@ -81,8 +81,24 @@ if(isset($_GET['delete_id'])){
                                 <td><?= $row['room_no'] ?></td>
                                 <td><?= date('d M, Y', strtotime($row['admit_date'])) ?></td>
                                 <td><?= $row['discharge_date'] ? date('d M, Y', strtotime($row['discharge_date'])) : 'N/A' ?></td>
-                                <td>
-                                    <span class="badge <?= ($row['status'] == 'Admitted') ? 'bg-success' : 'bg-secondary' ?>">
+                                <td style="padding-top: 17px; padding-bottom: 17px;">
+                                    <?php
+                                    $status_class = '';
+                                    switch ($row['status']) {
+                                        case 'Admitted':
+                                            $status_class = 'badge-status-admitted';
+                                            break;
+                                        case 'Discharged':
+                                            $status_class = 'badge-status-discharged';
+                                            break;
+                                        case 'Cancelled':
+                                            $status_class = 'badge-status-cancelled';
+                                            break;
+                                        default:
+                                            $status_class = 'badge-status';
+                                    }
+                                    ?>
+                                    <span class="badge-status <?= $status_class ?>">
                                         <?= $row['status'] ?>
                                     </span>
                                 </td>

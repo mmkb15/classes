@@ -23,14 +23,10 @@ if(isset($_GET['page'])){
         include_once 'views/pages/patients/edit.php';
     }
         // =============================================
-        // PATIENT HISTORY
+        // PATIENT HISTORY (Search + Display)
         // =============================================
-        elseif($page == 'patients/history' || $page == 'patient-history'){
+        elseif($page == 'history-search' || $page == 'patients/history-search' || $page == 'patient-history'){
             include_once 'views/pages/patients/history.php';
-        }
-        
-        elseif($page == 'patients/history-search' || $page == 'history-search'){
-            include_once 'views/pages/patients/history-search.php';
         }
 
     // =============================================
