@@ -70,9 +70,9 @@ class Admission
         global $db;
 
         $sql = "SELECT adm.*, 
-                       pat.name AS patient_name, 
-                       pat.phone AS patient_phone,
-                       rm.room_no 
+                    pat.name AS patient_name,
+                    pat.image AS patient_image,
+                    rm.room_no 
                 FROM admissions AS adm
                 LEFT JOIN patients AS pat ON adm.patient_id = pat.id
                 LEFT JOIN rooms AS rm ON adm.room_id = rm.id

@@ -52,10 +52,14 @@ class Billing
      */
     static public function readAll() {
         global $db;
-        $sql = "SELECT b.*, p.name AS patient_name 
+
+        $sql = "SELECT b.*, 
+                    p.name AS patient_name,
+                    p.image AS patient_image 
                 FROM billings AS b
                 LEFT JOIN patients AS p ON b.patient_id = p.id
                 ORDER BY b.id DESC";
+
         $result = $db->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }

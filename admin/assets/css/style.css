@@ -17787,7 +17787,7 @@ Swiper Slider Style
   top: 19px;
   right: 12px;
   transition: all ease 0.5s;
-  border-color: #64748b;
+  border-color: #6a68c7;
 }
 .menu-vertical .menu-item .menu-link .title {
   transition: all ease 0.5s;
@@ -17889,7 +17889,7 @@ Swiper Slider Style
   font-size: 14px;
   font-weight: 500;
 }
-.menu-vertical .menu-sub .menu-item .menu-link::before {
+/* .menu-vertical .menu-sub .menu-item .menu-link::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -17900,7 +17900,19 @@ Swiper Slider Style
   left: 18px;
   border-radius: 50px;
   transition: all ease 0.5s;
+} */
+ /* Parent category with left accent border */
+
+ /* New ADD */
+.menu-item.open > .menu-link.menu-toggle {
+    position: relative;
+    font-weight: 600;
+    color: #6a68c7;
 }
+
+
+
+
 .menu-vertical .menu-sub .menu-item .menu-link.active {
   background-color: #ECF0FF;
   color: #605DFF;
@@ -24983,3 +24995,6 @@ Theme Settings Style
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+

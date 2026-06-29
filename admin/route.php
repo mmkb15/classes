@@ -22,6 +22,29 @@ if(isset($_GET['page'])){
     elseif($page == 'patients/edit' || $page == 'edit-patient'){
         include_once 'views/pages/patients/edit.php';
     }
+        // =============================================
+        // PATIENT HISTORY
+        // =============================================
+        elseif($page == 'patients/history' || $page == 'patient-history'){
+            include_once 'views/pages/patients/history.php';
+        }
+        
+        elseif($page == 'patients/history-search' || $page == 'history-search'){
+            include_once 'views/pages/patients/history-search.php';
+        }
+
+    // =============================================
+    // Admissions MODULE
+    // =============================================
+    elseif($page == 'admissions/manage' || $page == 'admissions'){
+        include_once 'views/pages/admissions/manage.php';
+    }
+    elseif($page == 'admissions/create' || $page == 'create-admission'){
+        include_once 'views/pages/admissions/create.php';
+    }
+    elseif($page == 'admissions/discharge' || $page == 'discharge-admission'){
+        include_once 'views/pages/admissions/discharge.php';
+    }
     
     // =============================================
     // DOCTORS MODULE
@@ -38,20 +61,8 @@ if(isset($_GET['page'])){
     elseif($page == 'doctors/view'){
         include_once 'views/pages/doctors/view.php';
     }
-    
-    // =============================================
-    // APPOINTMENTS MODULE
-    // =============================================
-    elseif($page == 'appointments/manage' || $page == 'appointments'){
-        include_once 'views/pages/appointments/manage.php';
-    }
-    elseif($page == 'appointments/create' || $page == 'create-appointment'){
-        include_once 'views/pages/appointments/create.php';
-    }
-    elseif($page == 'appointments/edit' || $page == 'edit-appointment'){
-        include_once 'views/pages/appointments/edit.php';
-    }
-    
+
+
     // =============================================
     // PRESCRIPTIONS MODULE
     // =============================================
@@ -67,19 +78,23 @@ if(isset($_GET['page'])){
     elseif($page == 'prescriptions/print' || $page == 'print-prescription'){
         include_once 'views/pages/prescriptions/print.php';
     }
+
+
+    // =============================================
+    // APPOINTMENTS MODULE
+    // =============================================
+    elseif($page == 'appointments/manage' || $page == 'appointments'){
+        include_once 'views/pages/appointments/manage.php';
+    }
+    elseif($page == 'appointments/create' || $page == 'create-appointment'){
+        include_once 'views/pages/appointments/create.php';
+    }
+    elseif($page == 'appointments/edit' || $page == 'edit-appointment'){
+        include_once 'views/pages/appointments/edit.php';
+    }
     
-    // =============================================
-    // Admissions MODULE
-    // =============================================
-    elseif($page == 'admissions/manage' || $page == 'admissions'){
-        include_once 'views/pages/admissions/manage.php';
-    }
-    elseif($page == 'admissions/create' || $page == 'create-admission'){
-        include_once 'views/pages/admissions/create.php';
-    }
-    elseif($page == 'admissions/discharge' || $page == 'discharge-admission'){
-        include_once 'views/pages/admissions/discharge.php';
-    }
+
+    
 
     // =============================================
     // MEDICINES MODULE
@@ -128,17 +143,6 @@ if(isset($_GET['page'])){
         }
         elseif($page == 'billings/print' || $page == 'print-billings'){
             include_once 'views/pages/billings/print.php';
-        }
-
-        // =============================================
-        // PATIENT HISTORY
-        // =============================================
-        elseif($page == 'patients/history' || $page == 'patient-history'){
-            include_once 'views/pages/patients/history.php';
-        }
-        
-        elseif($page == 'patients/history-search' || $page == 'history-search'){
-            include_once 'views/pages/patients/history-search.php';
         }
 
 

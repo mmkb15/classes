@@ -60,12 +60,14 @@ class Appointment
     // =============================================
     // READ ALL - all appointments with patient & doctor name
     // =============================================
+
     static public function readAll() {
         global $db;
 
         $sql = "SELECT app.*, 
-                       pat.name AS patient_name, 
-                       doc.name AS doctor_name 
+                    pat.name AS patient_name,
+                    pat.image AS patient_image,
+                    doc.name AS doctor_name 
                 FROM appointments AS app
                 LEFT JOIN patients AS pat ON app.patient_id = pat.id
                 LEFT JOIN doctors AS doc ON app.doctor_id = doc.id
@@ -74,7 +76,6 @@ class Appointment
         $result = $db->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-
     // =============================================
     // READ BY ID - specific appointment
     // =============================================

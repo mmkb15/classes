@@ -58,7 +58,26 @@ if(isset($_GET['delete_id'])){
                             <?php foreach($admissions as $row): ?>
                             <tr>
                                 <td><?= $row['id'] ?></td>
-                                <td><?= htmlspecialchars($row['patient_name']) ?></td>
+                                <td style="padding-top: 17px; padding-bottom: 17px;">
+                                    <div class="d-flex align-items-center">
+
+                                        <!-- Patient Image -->
+                                        <?php if (!empty($row['patient_image'])): ?>
+                                            <img src="assets/uploads/patients/<?= $row['patient_image'] ?>" 
+                                                style="width:40px; height:40px; object-fit:cover; border-radius:50%;" 
+                                                alt="Patient">
+                                        <?php else: ?>
+                                            <img src="assets/images/patients-icon.svg" 
+                                                style="width:40px; height:40px; object-fit:cover; border-radius:50%;" 
+                                                alt="Default">
+                                        <?php endif; ?>
+
+                                        <div class="ms-2 ps-1">
+                                            <h6 class="fw-semibold fs-14 mb-0 text-secondary"><?= htmlspecialchars($row['patient_name']) ?></h6>
+                                        </div>
+                                        
+                                    </div>
+                                </td>
                                 <td><?= $row['room_no'] ?></td>
                                 <td><?= date('d M, Y', strtotime($row['admit_date'])) ?></td>
                                 <td><?= $row['discharge_date'] ? date('d M, Y', strtotime($row['discharge_date'])) : 'N/A' ?></td>

@@ -81,44 +81,46 @@ if(isset($_POST['btn-submit'])){
             <?php if($breakdown !== null): ?>
             <div class="mt-4">
                 <h4>Bill for <strong><?= htmlspecialchars($patient_name) ?></strong></h4>
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Item</th>
-                                <th>Details</th>
-                                <th>Amount (BDT)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Admission</strong></td>
-                                <td>
-                                    <?php if(isset($breakdown['admission_details'])): ?>
-                                        Room: <?= $breakdown['admission_details']['room'] ?? 'N/A' ?><br>
-                                        Days: <?= $breakdown['admission_details']['days'] ?? 0 ?> x <?= $breakdown['admission_details']['rate_per_day'] ?? 0 ?>
-                                    <?php else: ?>
-                                        No active admission
-                                    <?php endif; ?>
-                                </td>
-                                <td><?= $breakdown['admission'] ?? 0 ?></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Medicines</strong></td>
-                                <td>From all prescriptions</td>
-                                <td><?= $breakdown['medicines'] ?? 0 ?></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Tests</strong></td>
-                                <td>From all prescriptions</td>
-                                <td><?= $breakdown['tests'] ?? 0 ?></td>
-                            </tr>
-                            <tr class="table-success">
-                                <th colspan="2" class="text-end">Total Amount</th>
-                                <th><?= $breakdown['total'] ?? 0 ?></th>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="default-table-area">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Details</th>
+                                    <th>Amount (BDT)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Admission</strong></td>
+                                    <td>
+                                        <?php if(isset($breakdown['admission_details'])): ?>
+                                            Room: <?= $breakdown['admission_details']['room'] ?? 'N/A' ?><br>
+                                            Days: <?= $breakdown['admission_details']['days'] ?? 0 ?> x <?= $breakdown['admission_details']['rate_per_day'] ?? 0 ?>
+                                        <?php else: ?>
+                                            No active admission
+                                        <?php endif; ?>
+                                    </td>
+                                    <td><?= $breakdown['admission'] ?? 0 ?></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Medicines</strong></td>
+                                    <td>From all prescriptions</td>
+                                    <td><?= $breakdown['medicines'] ?? 0 ?></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tests</strong></td>
+                                    <td>From all prescriptions</td>
+                                    <td><?= $breakdown['tests'] ?? 0 ?></td>
+                                </tr>
+                                <tr class="table-success">
+                                    <th colspan="2" class="text-end">Total Amount</th>
+                                    <th><?= $breakdown['total'] ?? 0 ?></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <!-- Form to save bill -->

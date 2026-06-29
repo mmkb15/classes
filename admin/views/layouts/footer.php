@@ -30,5 +30,8 @@
         <script src="assets/js/custom/apexcharts.js"></script>
         <script src="assets/js/custom/echarts.js"></script>
         <script src="assets/js/custom/custom.js"></script>
+        <script>
+            
+        </script>
     </body>
 </html>

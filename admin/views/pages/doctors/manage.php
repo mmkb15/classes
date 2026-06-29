@@ -104,7 +104,16 @@ $rows = doctor::readAll();
                             </td>
                             <td style="padding-top: 17px; padding-bottom: 17px;">
                                 <a href="#" class="d-flex align-items-center">
-                                    <!-- <img src="assets/images/user-134.png" class="wh-30 rounded-3" alt="user"> -->
+
+                                    <!-- Image block -->
+                                    <?php if (!empty($item['image'])): ?>
+                                        <img src="assets/uploads/doctors/<?= $item['image'] ?>" 
+                                            style="width:40px; height:40px; object-fit:cover; border-radius:50%;">
+                                    <?php else: ?>
+                                        <img src="assets/images/dr-olivia.png" 
+                                            style="width:40px; height:40px; object-fit:cover; border-radius:50%;">
+                                    <?php endif; ?>
+                                    
                                     <div class="ms-2 ps-1">
                                         <h6 class="fw-semibold fs-14 mb-0 text-secondary"><?= $item['name'] ?></h6>
                                     </div>

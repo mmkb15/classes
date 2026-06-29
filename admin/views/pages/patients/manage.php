@@ -67,7 +67,6 @@ $rows = Patient::readAll();
                             <th scope="col" style="padding-top: 9.5px; padding-bottom: 9.5px;">
                                 <span class="text-body-color-50 fs-14 fw-medium">
                                     <div class="form-check d-flex align-items-center">
-                                        <!-- <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1"> -->
                                         <label class="position-relative top-2 ms-2" for="flexCheckDefault1">ID</label>
                                     </div>
                                 </span>
@@ -107,7 +106,18 @@ $rows = Patient::readAll();
                             </td>
                             <td style="padding-top: 17px; padding-bottom: 17px;">
                                 <a href="patient-history?id=<?= $item['id'] ?>" class="d-flex align-items-center">
-                                    <!-- <img src="assets/images/user-134.png" class="wh-30 rounded-3" alt="user"> -->
+
+                                    <!-- image -->
+                                        <?php if (!empty($item['image'])): ?>
+                                            <img src="assets/uploads/patients/<?= $item['image'] ?>" 
+                                                style="width:40px; height:40px; object-fit:cover; border-radius:50%;" 
+                                                alt="Patient">
+                                        <?php else: ?>
+                                            <img src="assets/images/patients-icon.svg" 
+                                                style="width:40px; height:40px; object-fit:cover; border-radius:50%;" 
+                                                alt="Default">
+                                        <?php endif; ?>
+
                                     <div class="ms-2 ps-1">
                                         <h6 class="fw-semibold fs-14 mb-0 text-secondary"><?= $item['name'] ?></h6>
                                     </div>

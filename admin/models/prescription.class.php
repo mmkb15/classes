@@ -58,8 +58,9 @@ class Prescription
         global $db;
 
         $sql = "SELECT p.*, 
-                       pat.name AS patient_name, 
-                       doc.name AS doctor_name 
+                    pat.name AS patient_name,
+                    pat.image AS patient_image,
+                    doc.name AS doctor_name 
                 FROM prescriptions AS p
                 LEFT JOIN patients AS pat ON p.patient_id = pat.id
                 LEFT JOIN doctors AS doc ON p.doctor_id = doc.id

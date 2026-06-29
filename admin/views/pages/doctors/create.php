@@ -28,6 +28,23 @@ if(isset($_POST['btn-submit'])){
   $phone = $_POST['phone'];
   $email = $_POST['email'];
 
+    /* 
+      *-------------------------------------------------------------------------
+       * Image
+      *-------------------------------------------------------------------------
+    */
+    $image_name = null;
+    $upload_dir = 'assets/uploads/doctors/';
+    if (!is_dir($upload_dir)) mkdir($upload_dir, 0777, true);
+
+    if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
+        $allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+        $ext = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
+        if (in_array($ext, $allowed)) {
+            $image_name = 'doctor_' . time() . '.' . $ext;
+            move_uploaded_file($_FILES['image']['tmp_name'], $upload_dir . $image_name);
+        }
+    }
 
 
 /* 
@@ -35,7 +52,7 @@ if(isset($_POST['btn-submit'])){
   * Doctor Registration
   *-------------------------------------------------------------------------
 */
-  $doctor = new doctor(null, $dept_id, $name, $specialization, $phone, $email);
+  $doctor = new doctor(null, $dept_id, $name, $specialization, $phone, $email, $image_name);
   $res = $doctor->create();  
     if($res === true){
       $msg = "Doctor Created Successfully";
@@ -66,7 +83,7 @@ if(isset($_POST['btn-submit'])){
 
         <div class="card bg-white border-0 rounded-3 mb-4">
             <div class="card-body p-4">
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-lg-12 col-sm-12">
                             <div class="form-group mb-4">
@@ -107,6 +124,25 @@ if(isset($_POST['btn-submit'])){
                                 <input type="email" name="email" class="form-control h-60 border-border-color" placeholder="Your Email">
                             </div>
                         </div>
+
+                        <!-- Image Block -->
+                        <div class="col-lg-12">
+                            <div class="mb-4">
+                                <label class="label text-secondary">Add Avatar</label>
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar-upload mw-100">
+                                        <div class="mb-2">
+                                            <input type="file" id="imageUpload" class="form-control h-60" accept="image/*" style="padding-top: 18px;" name="image">
+                                        </div>
+                                        <span class="fs-12 mb-4 d-block">Please upload your image with a size of 135 x 135 (JPG, PNG, GIF, WebP)</span>
+                                        <div class="avatar-preview rounded-circle border-0">
+                                            <div id="imagePreview" class="rounded-circle" style="background-image: url('assets/images/doctor_01.png'); background-size: cover; background-position: center;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-lg-12">
                             <div class="d-flex flex-wrap gap-3">
                                 <!-- <button class="btn btn-danger py-2 px-4 fw-medium fs-16 text-white">Cancel</button> -->

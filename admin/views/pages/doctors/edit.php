@@ -18,12 +18,26 @@ if(isset($_POST['btn-submit'])){
   $email = $_POST['email'];
 
 
+  $image_name = null;
+  if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
+      $allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+      $ext = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
+      if (in_array($ext, $allowed)) {
+          // Delete old image
+          if (!empty($row['image']) && file_exists('assets/uploads/doctors/' . $row['image'])) {
+              unlink('assets/uploads/doctors/' . $row['image']);
+          }
+          $image_name = 'doctor_' . time() . '.' . $ext;
+          move_uploaded_file($_FILES['image']['tmp_name'], 'assets/uploads/doctors/' . $image_name);
+      }
+  }
+
 /* 
   *-------------------------------------------------------------------------
   * From doctor Class
   *-------------------------------------------------------------------------
 */
-  $doctor = new doctor($id, $dept_id, $name, $specialization, $phone, $email);
+  $doctor = new doctor($id, $dept_id, $name, $specialization, $phone, $email, $image_name);
   $res = $doctor->update();
       if($res === true){
       $msg = "Doctor Update Successfully";
@@ -84,7 +98,7 @@ if(isset($_POST['btn-submit'])){
               <?php if(isset($not_found)): ?>
                <h5>Data not found.</h5>
               <?php else: ?>
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?= $row['id'] ?>">
                     <div class="row">
                         <div class="col-lg-12 col-sm-12">
@@ -127,6 +141,28 @@ if(isset($_POST['btn-submit'])){
                                 <input type="email" name="email" class="form-control h-60 border-border-color" value="<?= $row['email'];?>">
                             </div>
                         </div>
+
+                        <!-- Image Block (Edit Page) -->
+                        <div class="col-lg-12">
+                            <div class="mb-4">
+                                <label class="label text-secondary">Add Avatar</label>
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar-upload mw-100">
+                                        <div class="mb-2">
+                                            <input type="file" id="imageUpload" class="form-control h-60" accept="image/*" style="padding-top: 18px;" name="image">
+                                        </div>
+                                        <span class="fs-12 mb-4 d-block">Please upload your image with a size of 135 x 135 (JPG, PNG, GIF, WebP)</span>
+                                        <div class="avatar-preview rounded-circle border-0">
+                                            <div id="imagePreview" class="rounded-circle" 
+                                                style="background-image: url('<?= !empty($row['image']) ? 'assets/uploads/doctors/' . $row['image'] : 'assets/images/doctor_01.png' ?>'); 
+                                                        background-size: cover; background-position: center;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
 
                         <div class="col-lg-12">
                             <div class="d-flex flex-wrap gap-3">

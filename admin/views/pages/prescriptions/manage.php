@@ -93,10 +93,23 @@ $prescriptions = Prescription::readAll();
                                     </div>
                                 </td>
                                 <td style="padding-top: 17px; padding-bottom: 17px;">
-                                    <a href="javascript:void(0);" class="d-flex align-items-center">
+                                    <a href="view-prescription?id=<?= $row['id'] ?>" class="d-flex align-items-center">
+
+                                        <!-- Patient Image -->
+                                        <?php if (!empty($row['patient_image'])): ?>
+                                            <img src="assets/uploads/patients/<?= $row['patient_image'] ?>" 
+                                                style="width:40px; height:40px; object-fit:cover; border-radius:50%;" 
+                                                alt="Patient">
+                                        <?php else: ?>
+                                            <img src="assets/images/patients-icon.svg" 
+                                                style="width:40px; height:40px; object-fit:cover; border-radius:50%;" 
+                                                alt="Default">
+                                        <?php endif; ?>
+
                                         <div class="ms-2 ps-1">
                                             <h6 class="fw-semibold fs-14 mb-0 text-secondary"><?= htmlspecialchars($row['patient_name']) ?></h6>
                                         </div>
+
                                     </a>
                                 </td>
                                 <td class="text-primary fs-12 fw-normal" style="padding-top: 17px; padding-bottom: 17px;">
