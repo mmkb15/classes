@@ -158,6 +158,14 @@ $rows = Patient::readAll();
                                         <i class="material-symbols-outlined fs-18 text-danger">delete</i>
                                     </button>
                                     </form>
+
+                                    <!-- History Button  -->       
+                                    <a href="history?id=<?= $row['id'] ?>">
+                                        <button class="ps-0 border-0 bg-transparent lh-1 position-relative top-2" title="View History">
+                                            <i class="material-symbols-outlined fs-18 text-info">history</i>
+                                        </button>
+                                    </a>
+                                    
                                 </div>
                             </td> 
                         </tr>

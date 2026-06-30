@@ -122,6 +122,81 @@ class Patient
             return true;
         }
     }
+
+/**
+ * Get full patient history with all related data
+ */
+static public function getFullHistory($_patient_id) {
+    global $db;
+    
+    $history = [
+        'patient' => null,
+        'admissions' => [],
+        'prescriptions' => [],
+        'bills' => []
+    ];
+    
+    // 1. Get patient info
+    $history['patient'] = self::readByID($_patient_id);
+    
+    // 2. Get all admissions
+    $sql = "SELECT a.*, r.room_no, r.room_type 
+            FROM admissions AS a
+            LEFT JOIN rooms AS r ON a.room_id = r.id
+            WHERE a.patient_id = $_patient_id
+            ORDER BY a.id DESC";
+    $result = $db->query($sql);
+    $history['admissions'] = $result->fetch_all(MYSQLI_ASSOC);
+    
+    // 3. Get all prescriptions with medicines and tests
+    $sql = "SELECT p.*, d.name AS doctor_name 
+            FROM prescriptions AS p
+            LEFT JOIN doctors AS d ON p.doctor_id = d.id
+            WHERE p.patient_id = $_patient_id
+            ORDER BY p.id DESC";
+    $result = $db->query($sql);
+    $prescriptions = $result->fetch_all(MYSQLI_ASSOC);
+    
+    foreach($prescriptions as &$prescription) {
+        // Get medicines for this prescription
+        $med_sql = "SELECT pm.*, m.name AS medicine_name, m.strength 
+                    FROM prescription_medicines AS pm
+                    LEFT JOIN medicines AS m ON pm.medicine_id = m.id
+                    WHERE pm.prescription_id = {$prescription['id']}";
+        $med_result = $db->query($med_sql);
+        $prescription['medicines'] = $med_result->fetch_all(MYSQLI_ASSOC);
+        
+        // Get tests for this prescription
+        $test_sql = "SELECT pt.*, t.name AS test_name 
+                    FROM prescription_tests AS pt
+                    LEFT JOIN tests AS t ON pt.test_id = t.id
+                    WHERE pt.prescription_id = {$prescription['id']}";
+        $test_result = $db->query($test_sql);
+        $prescription['tests'] = $test_result->fetch_all(MYSQLI_ASSOC);
+    }
+    $history['prescriptions'] = $prescriptions;
+    
+    // 4. Get all bills
+    $sql = "SELECT * FROM billings 
+            WHERE patient_id = $_patient_id
+            ORDER BY id DESC";
+    $result = $db->query($sql);
+    $history['bills'] = $result->fetch_all(MYSQLI_ASSOC);
+    
+    return $history;
 }
+    
+
+
+
+}
+
+
+
+
+
+
+
+
 
 ?>

@@ -8,13 +8,13 @@ define('DB_PASS', '');
 define('DB_NAME', 'hospital_db');
 
 
-/* 
+
 // Hosting
-define('DB_HOST', 'http://ecom.com');
-define('DB_USER', 'asia');
-define('DB_PASS', '1234');
-define('DB_NAME', 'ecom');
-*/
+// define('DB_HOST', 'localhost');
+// define('DB_USER', 'u752250113_hospital_db');
+// define('DB_PASS', 'pasS@8888');
+// define('DB_NAME', 'u752250113_hospital_db');
+
 
 
 $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);

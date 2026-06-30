@@ -1,14 +1,12 @@
 <?php
 if(isset($_GET['page'])){
     $page = $_GET['page'];
-
     if(isset($_SESSION['id']) == false){
         include_once('views/pages/auth/login.php');
-    }
-    if($page == 'dashboard'){
+    }elseif($page == 'dashboard'){
         include_once('views/pages/dashboard.php');
     } 
-    if($page == 'login'){
+    elseif($page == 'login'){
         include_once('views/pages/auth/login.php');
     } 
     elseif($page == 'form' || $page == 'form.php'){
@@ -35,10 +33,13 @@ if(isset($_GET['page'])){
     elseif($page == 'blog'){
         include_once('views/pages/blog.php');
     }
+    elseif($page == 'access-deny'){
+        include_once('views/pages/access-deny.php');
+    }
     else{
         include_once('views/pages/dashboard.php');
     }
 }else{
-        include_once('views/pages/auth/login.php');
-    }
+    include_once('views/pages/auth/login.php');
+}
 ?>

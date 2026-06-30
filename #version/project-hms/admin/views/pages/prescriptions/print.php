@@ -362,7 +362,6 @@ PRINT BUTTONS
     <button onclick="window.print()">🖶 Print Prescription</button>
     <button class="btn-close" onclick="window.close()">✖ Close</button>
     
-    
 </div>
 
 </body>

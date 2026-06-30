@@ -57,7 +57,7 @@
 
             <!-- Admission Management (Future) -->
             <li class="menu-item">
-                <a href="?page=dashboard" class="menu-link">
+                <a href="admissions" class="menu-link">
                     <span class="material-symbols-outlined menu-icon">bed</span>
                     <span class="title">Admissions</span>
                 </a>
@@ -65,7 +65,7 @@
 
             <!-- Medicine Management (Future) -->
             <li class="menu-item">
-                <a href="?page=dashboard" class="menu-link">
+                <a href="medicines" class="menu-link">
                     <span class="material-symbols-outlined menu-icon">vaccines</span>
                     <span class="title">Medicines</span>
                 </a>
@@ -73,7 +73,7 @@
 
             <!-- Test Management (Future) -->
             <li class="menu-item">
-                <a href="?page=dashboard" class="menu-link">
+                <a href="tests" class="menu-link">
                     <span class="material-symbols-outlined menu-icon">science</span>
                     <span class="title">Tests</span>
                 </a>
@@ -81,7 +81,7 @@
 
             <!-- Billing Management (Future) -->
             <li class="menu-item">
-                <a href="?page=dashboard" class="menu-link">
+                <a href="billings" class="menu-link">
                     <span class="material-symbols-outlined menu-icon">receipt_long</span>
                     <span class="title">Billing</span>
                 </a>
@@ -89,7 +89,7 @@
 
             <!-- Patient History (Future) -->
             <li class="menu-item">
-                <a href="?page=dashboard" class="menu-link">
+                <a href="history" class="menu-link">
                     <span class="material-symbols-outlined menu-icon">history</span>
                     <span class="title">Patient History</span>
                 </a>
@@ -102,6 +102,7 @@
                     <span class="title">User Management</span>
                 </a>
             </li>
+
         </ul>
     </aside>
 </div>
